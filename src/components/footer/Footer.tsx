@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <div className="bg-red-500 w-full">
+    <div className="bg-orange-500 w-full">
       <ul className="flex flex-col sm:flex-row sm:mx-auto justify-between gap-6 p-4">
         {navLinks.map((link, index) => (
           <li key={index} className="">
