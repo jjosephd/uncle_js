@@ -12,7 +12,7 @@ const Hero = () => {
         <div className="w-full">
           <div className="container flex justify-center sm:justify-end">
             <h1
-              className="text-6xl text-orange-500 font-extrabold 
+              className="text-5xl sm:text-6xl text-orange-500 font-extrabold 
           uppercase max-w-sm [text-shadow:_4px_4px_0_rgb(0_0_0)]
           "
             >

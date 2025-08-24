@@ -21,7 +21,7 @@ const NavBar = () => {
         <li className="cart-list-item">Cart</li>
         <li className="order-list-item">
           <NavLink to="/">
-            <div className="order-btn border border-black border-b-6 border-r-6 rounded-full text-xl sm:text-2xl p-2">
+            <div className="order-btn border border-black border-b-6 border-r-6 rounded-full text-lg sm:text-2xl py-1 px-2">
               Order Now
             </div>
           </NavLink>
