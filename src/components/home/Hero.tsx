@@ -4,7 +4,7 @@ import HeroBar from './HeroBar';
 
 const Hero = () => {
   return (
-    <div className="h-screen">
+    <div className="max-h-screen">
       <section
         className="relative h-[350px] sm:min-h-[450px] bg-cover bg-center flex flex-col w-full min-w-screen items-center justify-center text-white text-center"
         style={{ backgroundImage: `url(${heroImg})` }}
