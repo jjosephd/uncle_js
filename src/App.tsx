@@ -6,11 +6,16 @@ import Footer from './components/footer/Footer';
 
 const HomeLayout = () => {
   return (
-    <div className="flex h-screen bg-background w-full flex-col">
-      <NavBar />
-      <div className="overflow-hidden flex-grow flex justify-center">
+    <div
+      className="flex bg-background w-full flex-col"
+      style={{ fontFamily: 'MyCustomFont, sans-serif' }}
+    >
+      <div className="fixed w-screen z-50">
+        <NavBar />
+      </div>
+      <div className="overflow-hidden flex-grow flex justify-center pt-36">
         {/* Header Component */}
-        <main className="overflow-y-auto flex flex-col justify-center items-center max-w-xl w-full">
+        <main className="overflow-y-auto flex flex-col justify-center items-center w-full">
           <Outlet />
         </main>
       </div>

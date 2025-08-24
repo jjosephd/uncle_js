@@ -3,7 +3,7 @@ import { navLinks } from '../../data/navLinks';
 
 const NavBar = () => {
   return (
-    <nav className="navbar flex items-center text-white bg-orange-500 p-6 w-full font-extrabold">
+    <nav className="navbar flex items-center text-white bg-orange-500 p-6 w-full font-extrabold mb-12">
       <div className="flex sm:hidden">MenuBtn</div>
       <ul className="nav-links hidden sm:flex w-full navbar-start gap-2">
         {navLinks.map((link, index) => (
@@ -21,7 +21,7 @@ const NavBar = () => {
         <li className="cart-list-item">Cart</li>
         <li className="order-list-item">
           <NavLink to="/">
-            <div className="order-btn border border-black border-b-6 border-l-6 rounded-full text-xl sm:text-2xl p-2">
+            <div className="order-btn border border-black border-b-6 border-r-6 rounded-full text-xl sm:text-2xl p-2">
               Order Now
             </div>
           </NavLink>
