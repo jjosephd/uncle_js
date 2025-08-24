@@ -4,7 +4,7 @@ import { IoArrowRedo } from 'react-icons/io5';
 const HeroBar = () => {
   return (
     <div className="hero-bar w-full bg-green-900 text-white p-8 flex justify-center rounded">
-      <ul className="flex justify-between gap-6 items-center">
+      <ul className="flex flex-col sm:flex-row justify-between gap-6 items-center">
         <li className="flex items-center">
           <div
             className="uppercase text-2xl sm:text-3xl font-extrabold
