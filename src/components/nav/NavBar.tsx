@@ -1,11 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import { navLinks } from '../../data/navLinks';
+import { PiChefHatBold } from 'react-icons/pi';
 
 const NavBar = () => {
   return (
     <nav className="navbar flex items-center text-white bg-orange-500 p-6 w-full font-extrabold mb-12">
-      <div className="flex sm:hidden">MenuBtn</div>
-      <ul className="nav-links hidden sm:flex w-full navbar-start gap-2">
+      <div className="flex lg:hidden">MenuBtn</div>
+      <ul className="nav-links hidden lg:flex w-full navbar-start gap-2">
         {navLinks.map((link, index) => (
           <li key={index} className="">
             <NavLink to={link.link}>
@@ -16,6 +17,7 @@ const NavBar = () => {
           </li>
         ))}
       </ul>
+
       <ul className="btn-container flex w-full navbar-end gap-4">
         <li className="social-list-item">Instagram</li>
         <li className="cart-list-item">Cart</li>
