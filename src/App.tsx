@@ -3,6 +3,7 @@ import { Outlet, Route, Routes } from 'react-router-dom';
 import Home from './components/home/Home';
 import NavBar from './components/nav/NavBar';
 import Footer from './components/footer/Footer';
+import { useStore } from './store/store';
 
 const HomeLayout = () => {
   return (
@@ -27,8 +28,15 @@ const HomeLayout = () => {
 };
 
 function App() {
+  const { count, increment, decrement } = useStore();
   return (
     <>
+      {/* You can remove this example counter */}
+      <div className='flex gap-4 items-center justify-center'>
+        <h1>Count: {count}</h1>
+        <button className='p-2 border' onClick={increment}>Increment</button>
+        <button className='p-2 border' onClick={decrement}>Decrement</button>
+      </div>
       <Routes>
         <Route path="/" element={<HomeLayout />}>
           {/* Other routes */}
