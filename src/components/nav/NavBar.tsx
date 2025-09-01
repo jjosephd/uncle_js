@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { navLinks } from '../../data/navLinks';
 import { PiChefHatBold } from 'react-icons/pi';
+import ActiveCart from '../cart/ActiveCart';
 
 const NavBar = () => {
   return (
@@ -20,7 +21,9 @@ const NavBar = () => {
 
       <ul className="btn-container flex w-full navbar-end gap-4">
         <li className="social-list-item">Instagram</li>
-        <li className="cart-list-item">Cart</li>
+        <li className="cart-list-item">
+          <ActiveCart />
+        </li>
         <li className="order-list-item">
           <NavLink to="/">
             <div className="order-btn border border-black border-b-6 border-r-6 rounded-full text-lg sm:text-2xl py-1 px-2">
