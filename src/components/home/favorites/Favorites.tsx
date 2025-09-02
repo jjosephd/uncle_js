@@ -1,6 +1,7 @@
 import React from 'react';
 import { favoriteItems } from '../../../data/favorites';
 import FavoritesCard from './FavoritesCard';
+import Cart from '../../cart/Cart';
 
 const Favorites = () => {
   return (
@@ -10,12 +11,7 @@ const Favorites = () => {
       </h2>
       <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-5 justify-items-center">
         {favoriteItems.map((item) => (
-          <FavoritesCard
-            key={item.id}
-            title={item.title}
-            description={item.desc}
-            image={item.imageUrl}
-          />
+          <FavoritesCard key={item.id} item={item} />
         ))}
       </div>
     </div>
