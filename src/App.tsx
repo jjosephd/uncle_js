@@ -3,7 +3,6 @@ import { Outlet, Route, Routes } from 'react-router-dom';
 import Home from './components/home/Home';
 import NavBar from './components/nav/NavBar';
 import Footer from './components/footer/Footer';
-import { useStore } from './store/store';
 
 const HomeLayout = () => {
   return (
@@ -30,8 +29,6 @@ const HomeLayout = () => {
 function App() {
   return (
     <>
-      {/* You can remove this example counter */}
-
       <Routes>
         <Route path="/" element={<HomeLayout />}>
           {/* Other routes */}

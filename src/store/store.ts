@@ -11,48 +11,64 @@ export interface CartItem {
 // Define the interface for the store's state
 export interface StoreState {
   cart: CartItem[];
+  isCartOpen: boolean;
   addToCart: (item: CartItem) => void;
-  removeFromCart: (itemId: number) => void;
+  removeItem: (itemId: number) => void;
+  decrementItem: (itemId: number) => void;
   clearCart: () => void;
+  toggleCart: () => void;
 }
 
 export const useStore = create<StoreState>((set) => ({
   // Initial state
   cart: [],
+  isCartOpen: false,
 
-  // Action to add an item to the cart
+  // Action to add an item to the cart, or increment if it already exists
   addToCart: (item) =>
     set((state) => {
-      console.log('Current cart:', state.cart);
-      console.log('Item being added:', item);
       const existingItem = state.cart.find(
         (cartItem) => cartItem.id === item.id
       );
-      console.log('Existing item found:', existingItem);
-
       if (existingItem) {
-        console.log('Item exists. Incrementing quantity.');
         const updatedCart = state.cart.map((cartItem) =>
           cartItem.id === item.id
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem
         );
-        console.log('Updated cart:', updatedCart);
         return { cart: updatedCart };
       } else {
-        console.log('Item is new. Adding to cart.');
-        const newCart = [...state.cart, { ...item, quantity: 1 }];
-        console.log('New cart:', newCart);
-        return { cart: newCart };
+        return { cart: [...state.cart, { ...item, quantity: 1 }] };
       }
     }),
 
-  // Action to remove an item from the cart
-  removeFromCart: (itemId) =>
+  // Action to completely remove an item from the cart
+  removeItem: (itemId) =>
     set((state) => ({
       cart: state.cart.filter((item) => item.id !== itemId),
     })),
 
+  // Action to decrement an item's quantity, or remove if quantity is 1
+  decrementItem: (itemId) =>
+    set((state) => {
+      const existingItem = state.cart.find(
+        (cartItem) => cartItem.id === itemId
+      );
+      if (existingItem && existingItem.quantity > 1) {
+        const updatedCart = state.cart.map((cartItem) =>
+          cartItem.id === itemId
+            ? { ...cartItem, quantity: cartItem.quantity - 1 }
+            : cartItem
+        );
+        return { cart: updatedCart };
+      } else {
+        return { cart: state.cart.filter((item) => item.id !== itemId) };
+      }
+    }),
+
   // Action to clear the entire cart
   clearCart: () => set({ cart: [] }),
+
+  // Action to toggle the cart visibility
+  toggleCart: () => set((state) => ({ isCartOpen: !state.isCartOpen })),
 }));

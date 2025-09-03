@@ -1,11 +1,13 @@
 import React from 'react';
 import { LuShoppingBasket } from 'react-icons/lu';
 import CartCount from './CartCount';
-import Cart from './Cart';
+import { useStore } from '../../store/store';
 
 const ActiveCart = () => {
+  const toggleCart = useStore((state) => state.toggleCart);
+
   return (
-    <div className="relative flex items-center">
+    <div className="relative flex items-center" onClick={toggleCart}>
       <div>
         <LuShoppingBasket className="text-2xl hover:cursor-pointer" />
       </div>
