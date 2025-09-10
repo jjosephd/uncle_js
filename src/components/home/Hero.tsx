@@ -1,4 +1,4 @@
-import React from 'react';
+
 import heroImg from '../../assets/images/heroImg.jpg';
 import HeroBar from './HeroBar';
 

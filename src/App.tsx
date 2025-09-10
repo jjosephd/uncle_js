@@ -3,11 +3,12 @@ import { Outlet, Route, Routes } from 'react-router-dom';
 import Home from './components/home/Home';
 import NavBar from './components/nav/NavBar';
 import Footer from './components/footer/Footer';
+import Menu from './components/menu/Menu';
 
 const HomeLayout = () => {
   return (
     <div
-      className="flex bg-background w-full flex-col"
+      className="flex bg-background w-full flex-col min-h-screen"
       style={{ fontFamily: 'MyCustomFont, sans-serif' }}
     >
       <div className="fixed w-screen z-50">
@@ -33,6 +34,7 @@ function App() {
         <Route path="/" element={<HomeLayout />}>
           {/* Other routes */}
           <Route index element={<Home />}></Route>
+          <Route path={'/menu'} element={<Menu />}></Route>
         </Route>
       </Routes>
     </>

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { navLinks, subLinks } from '../../data/navLinks';
 import { NavLink } from 'react-router-dom';
 

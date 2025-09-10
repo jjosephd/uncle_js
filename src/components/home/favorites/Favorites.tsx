@@ -1,7 +1,7 @@
-import React from 'react';
+
 import { favoriteItems } from '../../../data/favorites';
 import FavoritesCard from './FavoritesCard';
-import Cart from '../../cart/Cart';
+
 
 const Favorites = () => {
   return (

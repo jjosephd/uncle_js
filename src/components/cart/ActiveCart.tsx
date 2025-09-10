@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { LuShoppingBasket } from 'react-icons/lu';
 import CartCount from './CartCount';
 import { useStore } from '../../store/store';

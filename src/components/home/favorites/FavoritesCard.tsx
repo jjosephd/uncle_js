@@ -1,9 +1,9 @@
-import React from 'react';
+
 import { useStore } from '../../../store/store';
 import type { Product } from '../../../data/productData';
 
 const FavoritesCard = ({ item }: { item: Product }) => {
-  const { addToCart, cart } = useStore();
+  const { addToCart } = useStore();
 
   const handleAddToCart = () => {
     addToCart({

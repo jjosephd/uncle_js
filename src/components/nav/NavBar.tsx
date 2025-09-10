@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { navLinks } from '../../data/navLinks';
-import { PiChefHatBold } from 'react-icons/pi';
+
 import { FaInstagram } from 'react-icons/fa';
 import ActiveCart from '../cart/ActiveCart';
 

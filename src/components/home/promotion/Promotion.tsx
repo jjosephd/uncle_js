@@ -1,6 +1,6 @@
-import React from 'react';
+
 import { promotionsData } from '../../../data/promotions';
-import cocktailImg from '../../../assets/images/cocktailImg.jpg';
+
 
 const Promotion = () => {
   return (

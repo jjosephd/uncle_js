@@ -1,14 +1,13 @@
-import React from 'react';
 import { useStore } from '../../store/store';
 import { getTotalPrice } from '../../store/selectors';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, type Variants } from 'framer-motion';
 
 const Cart = () => {
   const { cart, addToCart, decrementItem, clearCart, isCartOpen, toggleCart } =
     useStore();
   const totalPrice = useStore(getTotalPrice);
 
-  const cartVariants = {
+  const cartVariants: Variants = {
     hidden: {
       x: '100%',
       opacity: 0,

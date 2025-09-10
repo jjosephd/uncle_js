@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { IoArrowRedo } from 'react-icons/io5';
 
 const HeroBar = () => {
