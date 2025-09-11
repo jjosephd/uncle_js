@@ -1,7 +1,5 @@
-
 import { favoriteItems } from '../../../data/favorites';
 import FavoritesCard from './FavoritesCard';
-
 
 const Favorites = () => {
   return (

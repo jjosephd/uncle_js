@@ -1,19 +1,23 @@
-
-
 import Hero from './Hero';
 import Favorites from './favorites/Favorites';
 import Promotion from './promotion/Promotion';
 import CustomerFavorites from './favorites/CustomerFavorites';
 import Cart from '../cart/Cart';
+import About from './about/About';
 
 const Home = () => {
   return (
-    <div>
+    <div className="flex flex-col">
+      {' '}
+      {/* Add a flex column container */}
       <section className="cart-menu flex flex-grow fixed z-50 justify-end w-full">
         <Cart />
       </section>
       <section id="hero-section" className="hero-section">
         <Hero />
+      </section>
+      <section>
+        <About />
       </section>
       <section id="favorites-section" className="favorites-section">
         <Favorites />
@@ -21,7 +25,10 @@ const Home = () => {
       <section id="promotion-section" className="promotion-section">
         <Promotion />
       </section>
-      <section id="customer-favorites-section" className="customer-favorites-section">
+      <section
+        id="customer-favorites-section"
+        className="customer-favorites-section"
+      >
         <CustomerFavorites />
       </section>
     </div>

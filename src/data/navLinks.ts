@@ -4,16 +4,21 @@ export const navLinks = [
     to: 'hero-section',
   },
   {
-    name: 'Menu',
-    to: 'favorites-section',
+    name: 'About',
+    to: 'about-section',
+  },
+  {
+    name: 'Favorites',
+    to: 'customer-favorites-section',
   },
   {
     name: 'Promotions',
     to: 'promotion-section',
   },
+
   {
-    name: 'Favorites',
-    to: 'customer-favorites-section',
+    name: 'Menu',
+    to: 'favorites-section',
   },
 ];
 
