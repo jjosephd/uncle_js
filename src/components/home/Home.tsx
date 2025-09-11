@@ -12,16 +12,16 @@ const Home = () => {
       <section className="cart-menu flex flex-grow fixed z-50 justify-end w-full">
         <Cart />
       </section>
-      <section className="hero-section">
+      <section id="hero-section" className="hero-section">
         <Hero />
       </section>
-      <section className="favorites-section">
+      <section id="favorites-section" className="favorites-section">
         <Favorites />
       </section>
-      <section className="promotion-section">
+      <section id="promotion-section" className="promotion-section">
         <Promotion />
       </section>
-      <section className="customer-favorites-section">
+      <section id="customer-favorites-section" className="customer-favorites-section">
         <CustomerFavorites />
       </section>
     </div>

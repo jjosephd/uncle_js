@@ -1,19 +1,19 @@
 export const navLinks = [
   {
+    name: 'Home',
+    to: 'hero-section',
+  },
+  {
     name: 'Menu',
-    link: '/menu',
+    to: 'favorites-section',
   },
   {
-    name: 'Rewards',
-    link: '/rewards',
+    name: 'Promotions',
+    to: 'promotion-section',
   },
   {
-    name: 'Locations',
-    link: '/locations',
-  },
-  {
-    name: 'Gift Cards',
-    link: '/gift-cards',
+    name: 'Favorites',
+    to: 'customer-favorites-section',
   },
 ];
 

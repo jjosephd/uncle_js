@@ -1,5 +1,6 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-scroll';
 import { navLinks } from '../../data/navLinks';
+import { NavLink } from 'react-router-dom';
 
 import { FaInstagram } from 'react-icons/fa';
 import ActiveCart from '../cart/ActiveCart';
@@ -9,15 +10,34 @@ const NavBar = () => {
     <nav className="navbar flex items-center text-white bg-orange-500 p-6 w-full font-extrabold mb-12">
       <div className="flex lg:hidden">MenuBtn</div>
       <ul className="nav-links hidden lg:flex w-full navbar-start gap-2">
-        {navLinks.map((link, index) => (
-          <li key={index} className="">
-            <NavLink to={link.link}>
-              <span className="uppercase text-white text-md sm:text-xl font-extrabold hover:cursor-pointer">
-                {link.name}
-              </span>
-            </NavLink>
-          </li>
-        ))}
+        {navLinks.map((link, index) => {
+          if (link.name === 'Menu') {
+            return (
+              <li key={index}>
+                <NavLink to="/menu">
+                  <span className="uppercase text-white text-md sm:text-xl font-extrabold hover:cursor-pointer">
+                    {link.name}
+                  </span>
+                </NavLink>
+              </li>
+            );
+          }
+          return (
+            <li key={index}>
+              <Link
+                to={link.to}
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+              >
+                <span className="uppercase text-white text-md sm:text-xl font-extrabold hover:cursor-pointer">
+                  {link.name}
+                </span>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
 
       <ul className="btn-container flex w-full navbar-end gap-4 items-center">
