@@ -1,6 +1,7 @@
 import { useStore } from '../../store/store';
 import { getTotalPrice } from '../../store/selectors';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
+import { FaArrowRight } from 'react-icons/fa';
 
 const Cart = () => {
   const { cart, addToCart, decrementItem, clearCart, isCartOpen, toggleCart } =
@@ -38,9 +39,15 @@ const Cart = () => {
             exit="hidden"
           >
             <div className="header-container w-full bg-green-900 pt-2 flex justify-center items-center">
-              <h2 className="text-2xl font-bold mb-4 text-center text-white ">
+              <h2 className="text-2xl font-bold mb-4 text-center text-white">
                 Your Cart
               </h2>
+              <div
+                className="close-cart-button btn btn-xs bg-transparent text-white absolute top-1 right-1 hover:bg-orange-500"
+                onClick={toggleCart}
+              >
+                <FaArrowRight className="font-bold" />
+              </div>
             </div>
             <div className="items-container p-6">
               {cart.length === 0 ? (
@@ -54,7 +61,7 @@ const Cart = () => {
                     >
                       <div>
                         <p className="font-semibold">{item.name}</p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm">
                           ${item.price.toFixed(2)} x {item.quantity}
                         </p>
                       </div>
