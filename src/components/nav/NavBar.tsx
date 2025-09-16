@@ -3,9 +3,15 @@ import { navLinks } from '../../data/navLinks';
 import { NavLink } from 'react-router-dom';
 
 import { FaInstagram } from 'react-icons/fa';
+import { FaRegUserCircle } from 'react-icons/fa';
+
 import ActiveCart from '../cart/ActiveCart';
+import { useStore } from '../../store/store';
+import Login from '../user/Login';
 
 const NavBar = () => {
+  const toggleMenu = useStore((state) => state.toggleMenu);
+
   return (
     <nav className="navbar flex items-center text-white bg-orange-500 p-6 w-full font-extrabold mb-12">
       <div className="flex lg:hidden">MenuBtn</div>
@@ -15,7 +21,7 @@ const NavBar = () => {
             return (
               <li key={index}>
                 <NavLink to="/menu">
-                  <span className="uppercase text-white text-md sm:text-xl font-extrabold hover:cursor-pointer">
+                  <span className="uppercase text-white text-md sm:text-xl font-extrabold hover:cursor-pointer hover:text-green-900">
                     {link.name}
                   </span>
                 </NavLink>
@@ -31,7 +37,7 @@ const NavBar = () => {
                 offset={-70}
                 duration={500}
               >
-                <span className="uppercase text-white text-md sm:text-xl font-extrabold hover:cursor-pointer">
+                <span className="uppercase text-white text-md sm:text-xl font-extrabold hover:cursor-pointer hover:text-green-900">
                   {link.name}
                 </span>
               </Link>
@@ -42,10 +48,13 @@ const NavBar = () => {
 
       <ul className="btn-container flex w-full navbar-end gap-4 items-center">
         <li className="social-list-item">
-          <FaInstagram className="text-xl" />
+          <FaInstagram className="text-xl hover:cursor-pointer" />
         </li>
         <li className="cart-list-item">
           <ActiveCart />
+        </li>
+        <li className="login-list-item">
+          <Login />
         </li>
         <li className="order-list-item">
           <NavLink to="/">

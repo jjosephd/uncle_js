@@ -12,17 +12,21 @@ export interface CartItem {
 export interface StoreState {
   cart: CartItem[];
   isCartOpen: boolean;
+  isMenuOpen: boolean;
+
   addToCart: (item: CartItem) => void;
   removeItem: (itemId: number) => void;
   decrementItem: (itemId: number) => void;
   clearCart: () => void;
   toggleCart: () => void;
+  toggleMenu: () => void;
 }
 
 export const useStore = create<StoreState>((set) => ({
   // Initial state
   cart: [],
   isCartOpen: false,
+  isMenuOpen: false,
 
   // Action to add an item to the cart, or increment if it already exists
   addToCart: (item) =>
@@ -71,4 +75,7 @@ export const useStore = create<StoreState>((set) => ({
 
   // Action to toggle the cart visibility
   toggleCart: () => set((state) => ({ isCartOpen: !state.isCartOpen })),
+
+  // Action to toggle user menu visibility
+  toggleMenu: () => set((state) => ({ isMenuOpen: !state.isMenuOpen })),
 }));
