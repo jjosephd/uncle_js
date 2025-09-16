@@ -4,6 +4,7 @@ import Home from './components/home/Home';
 import NavBar from './components/nav/NavBar';
 import Footer from './components/footer/Footer';
 import Menu from './components/menu/Menu';
+import Login from './components/user/Login';
 
 const HomeLayout = () => {
   return (
@@ -35,6 +36,7 @@ function App() {
           {/* Other routes */}
           <Route index element={<Home />}></Route>
           <Route path={'/menu'} element={<Menu />}></Route>
+          <Route path={'/login'} element={<Login />}></Route>
         </Route>
       </Routes>
     </>
