@@ -3,15 +3,11 @@ import { navLinks } from '../../data/navLinks';
 import { NavLink } from 'react-router-dom';
 
 import { FaInstagram } from 'react-icons/fa';
-import { FaRegUserCircle } from 'react-icons/fa';
 
 import ActiveCart from '../cart/ActiveCart';
-import { useStore } from '../../store/store';
-import Login from '../user/Login';
+import UserMenu from '../user/UserMenu';
 
 const NavBar = () => {
-  const toggleMenu = useStore((state) => state.toggleMenu);
-
   return (
     <nav className="navbar flex items-center text-white bg-orange-500 p-6 w-full font-extrabold mb-12">
       <div className="flex lg:hidden">MenuBtn</div>
@@ -54,7 +50,7 @@ const NavBar = () => {
           <ActiveCart />
         </li>
         <li className="login-list-item">
-          <Login />
+          <UserMenu />
         </li>
         <li className="order-list-item">
           <NavLink to="/">

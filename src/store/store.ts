@@ -13,6 +13,7 @@ export interface StoreState {
   cart: CartItem[];
   isCartOpen: boolean;
   isMenuOpen: boolean;
+  isAuthenticated: boolean;
 
   addToCart: (item: CartItem) => void;
   removeItem: (itemId: number) => void;
@@ -27,6 +28,7 @@ export const useStore = create<StoreState>((set) => ({
   cart: [],
   isCartOpen: false,
   isMenuOpen: false,
+  isAuthenticated: false,
 
   // Action to add an item to the cart, or increment if it already exists
   addToCart: (item) =>
@@ -78,4 +80,10 @@ export const useStore = create<StoreState>((set) => ({
 
   // Action to toggle user menu visibility
   toggleMenu: () => set((state) => ({ isMenuOpen: !state.isMenuOpen })),
+
+  // Action to authenticate user
+  authenticateUser: () => set({ isAuthenticated: true }),
+
+  // Action to log out user
+  logoutUser: () => set({ isAuthenticated: false }),
 }));
