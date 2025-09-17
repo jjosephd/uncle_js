@@ -15,6 +15,10 @@ export interface StoreState {
   isMenuOpen: boolean;
   isAuthenticated: boolean;
   isLoginOpen: boolean;
+
+  filterActive: boolean;
+  toggleFilter: () => void;
+
   toggleLogin: () => void;
 
   authenticateUser: () => void;
@@ -35,6 +39,7 @@ export const useStore = create<StoreState>((set) => ({
   isMenuOpen: false,
   isAuthenticated: false,
   isLoginOpen: true,
+  filterActive: false,
 
   // Action to add an item to the cart, or increment if it already exists
   addToCart: (item) =>
@@ -95,4 +100,7 @@ export const useStore = create<StoreState>((set) => ({
 
   // Action to toggle user menu visibility
   toggleMenu: () => set((state) => ({ isMenuOpen: !state.isMenuOpen })),
+
+  // Action to toggle filter menu
+  toggleFilter: () => set((state) => ({ filterActive: !state.filterActive })),
 }));
