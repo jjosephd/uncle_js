@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Loading from './Loading';
 
+// Login component handles user authentication and registration
 const Login = () => {
   const { isLoginOpen, toggleLogin, authenticateUser, isAuthenticated } =
     useLoginStore();
@@ -14,6 +15,7 @@ const Login = () => {
     setIsLoading(true);
     authenticateUser();
     setTimeout(() => {
+      // Simulate API call or authentication process
       setIsLoading(false);
       navigate('/');
     }, 1000);
@@ -33,11 +35,12 @@ const Login = () => {
     );
   };
 
+  // Register component for new user registration
   const Register = () => {
     return (
       <div
         className="register-container flex flex-col gap-2 justify-between items-center min-h-[200px] max-w-md
-         rounded-xl shadow-2xl  my-4 p-12 font-sans bg-slate-900 border border-orange-500 font-bold"
+         rounded-xl shadow-2xl  my-4 p-12 font-sans bg-slate-900 border border-orange-500/20 font-bold"
       >
         <header>
           <Header />
@@ -48,22 +51,22 @@ const Login = () => {
             <input
               type="text"
               placeholder="Username"
-              className="input input-bordered w-full max-w-xs text-black"
+              className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
             />
             <input
               type="email"
               placeholder="Email"
-              className="input input-bordered w-full max-w-xs text-black"
+              className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
             />
             <input
               type="password"
               placeholder="Password"
-              className="input input-bordered w-full max-w-xs text-black"
+              className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
             />
             <input
               type="password"
               placeholder="Confirm Password"
-              className="input input-bordered w-full max-w-xs text-black"
+              className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
             />
             <button
               className={`btn btn-primary ${isLoading ? 'loading' : ''}`}
@@ -85,11 +88,12 @@ const Login = () => {
     );
   };
 
+  // LoginPage component for existing user login
   const LoginPage = () => {
     return (
       <div
         className="register-container flex flex-col gap-2 justify-between items-center min-h-[200px] max-w-md
-         rounded-xl shadow-2xl  my-4 p-12 font-sans bg-slate-900 border border-orange-500 font-bold"
+         rounded-xl shadow-2xl  my-4 p-12 font-sans bg-slate-900 border border-orange-500/20 font-bold"
       >
         <header>
           <Header />
@@ -100,13 +104,13 @@ const Login = () => {
             <input
               type="text"
               placeholder="Username"
-              className="input input-bordered w-full max-w-xs text-black"
+              className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
             />
 
             <input
               type="password"
               placeholder="Password"
-              className="input input-bordered w-full max-w-xs text-black"
+              className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
             />
 
             <button
@@ -128,11 +132,10 @@ const Login = () => {
       </div>
     );
   };
+
+  // Render different components based on authentication status and login/register state
   return !isAuthenticated ? (
-    <>
-      {/* Render LoginPage or Register based on isLoginOpen state */}
-      {isLoginOpen ? <LoginPage /> : <Register />}
-    </>
+    <>{isLoginOpen ? <LoginPage /> : <Register />}</>
   ) : (
     <>
       {isLoading ? (
