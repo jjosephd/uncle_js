@@ -1,7 +1,13 @@
-import type { StoreState } from './store';
+import { useStore } from './store';
 
-export const getTotalItems = (state: StoreState) =>
-  state.cart.reduce((total, item) => total + item.quantity, 0);
+// Selector to get the total number of items in the cart
+export const useCartTotal = () => {
+  const cart = useStore((state) => state.cart);
+  return cart.reduce((total, item) => total + item.quantity, 0);
+};
 
-export const getTotalPrice = (state: StoreState) =>
-  state.cart.reduce((total, item) => total + item.price * item.quantity, 0);
+// Selector to get the total price of items in the cart
+export const useCartTotalPrice = () => {
+  const cart = useStore((state) => state.cart);
+  return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+};

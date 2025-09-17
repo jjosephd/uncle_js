@@ -1,0 +1,9 @@
+import type { StateCreator } from 'zustand';
+import type { UiSlice, StoreState } from './types';
+
+export const createUiSlice: StateCreator<StoreState, [], [], UiSlice> = (
+  set
+) => ({
+  isMenuOpen: false,
+  toggleMenu: () => set((state) => ({ isMenuOpen: !state.isMenuOpen })),
+});
