@@ -18,8 +18,8 @@ const Menu = () => {
     }, {} as { [key: string]: typeof products });
 
   return (
-    <>
-      <div className="m-4 w-full p-4">
+    <div className="w-screen">
+      <div className="m-4  p-4">
         <MenuFilterButton />
         <MenuFilter />
       </div>
@@ -65,7 +65,7 @@ const Menu = () => {
       <button className="btn btn-warning" onClick={() => navigate(-1)}>
         Previous Page
       </button>
-    </>
+    </div>
   );
 };
 
