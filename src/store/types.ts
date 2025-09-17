@@ -1,4 +1,3 @@
-
 // Define the interface for a single cart item
 export interface CartItem {
   id: number;
@@ -28,6 +27,8 @@ export interface UserSlice {
 export interface UiSlice {
   isMenuOpen: boolean;
   toggleMenu: () => void;
+  filterActive: boolean;
+  toggleFilter: () => void;
 }
 
 export type StoreState = CartSlice & UserSlice & UiSlice;

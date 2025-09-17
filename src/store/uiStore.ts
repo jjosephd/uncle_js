@@ -6,4 +6,6 @@ export const createUiSlice: StateCreator<StoreState, [], [], UiSlice> = (
 ) => ({
   isMenuOpen: false,
   toggleMenu: () => set((state) => ({ isMenuOpen: !state.isMenuOpen })),
+  filterActive: false,
+  toggleFilter: () => set((state) => ({ filterActive: !state.filterActive })),
 });

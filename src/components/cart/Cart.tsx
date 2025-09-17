@@ -1,12 +1,12 @@
 import { useStore } from '../../store/store';
-import { getTotalPrice } from '../../store/selectors';
+import { selectCartTotalPrice } from '../../store/selectors';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa';
 
 const Cart = () => {
   const { cart, addToCart, decrementItem, clearCart, isCartOpen, toggleCart } =
     useStore();
-  const totalPrice = useStore(getTotalPrice);
+  const totalPrice = useStore(selectCartTotalPrice);
 
   const cartVariants: Variants = {
     hidden: {
@@ -89,7 +89,7 @@ const Cart = () => {
                     </div>
                   ))}
                   <div className="mt-4 text-xl font-bold">
-                    Total: ${totalPrice.toFixed(2)}
+                    Total: ${totalPrice?.toFixed(2)}
                   </div>
                   <div className="btn-container flex flex-grow gap-2">
                     <button

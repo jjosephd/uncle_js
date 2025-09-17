@@ -1,106 +1,20 @@
+// Imports the main 'create' function from the Zustand library,
+// which is used to build the store.
 import { create } from 'zustand';
 
-// Define the interface for a single cart item
-export interface CartItem {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-}
+// Imports the main type definition for the entire store. This helps
+// TypeScript understand the complete shape of the state.
+import type { StoreState } from './types';
 
-// Define the interface for the store's state
-export interface StoreState {
-  cart: CartItem[];
-  isCartOpen: boolean;
-  isMenuOpen: boolean;
-  isAuthenticated: boolean;
-  isLoginOpen: boolean;
+// Imports the "slice creator" functions from their respective files.
+// Each function is responsible for creating a piece of the total state.
+import { createCartSlice } from './cartStore';
+import { createUserSlice } from './userStore';
+import { createUiSlice } from './uiStore';
 
-  filterActive: boolean;
-  toggleFilter: () => void;
-
-  toggleLogin: () => void;
-
-  authenticateUser: () => void;
-  logoutUser: () => void;
-
-  addToCart: (item: CartItem) => void;
-  removeItem: (itemId: number) => void;
-  decrementItem: (itemId: number) => void;
-  clearCart: () => void;
-  toggleCart: () => void;
-  toggleMenu: () => void;
-}
-
-export const useStore = create<StoreState>((set) => ({
-  // Initial state
-  cart: [],
-  isCartOpen: false,
-  isMenuOpen: false,
-  isAuthenticated: false,
-  isLoginOpen: true,
-  filterActive: false,
-
-  // Action to add an item to the cart, or increment if it already exists
-  addToCart: (item) =>
-    set((state) => {
-      const existingItem = state.cart.find(
-        (cartItem) => cartItem.id === item.id
-      );
-      if (existingItem) {
-        const updatedCart = state.cart.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
-        );
-        return { cart: updatedCart };
-      } else {
-        return { cart: [...state.cart, { ...item, quantity: 1 }] };
-      }
-    }),
-
-  // Action to completely remove an item from the cart
-  removeItem: (itemId) =>
-    set((state) => ({
-      cart: state.cart.filter((item) => item.id !== itemId),
-    })),
-
-  // Action to decrement an item's quantity, or remove if quantity is 1
-  decrementItem: (itemId) =>
-    set((state) => {
-      const existingItem = state.cart.find(
-        (cartItem) => cartItem.id === itemId
-      );
-      if (existingItem && existingItem.quantity > 1) {
-        const updatedCart = state.cart.map((cartItem) =>
-          cartItem.id === itemId
-            ? { ...cartItem, quantity: cartItem.quantity - 1 }
-            : cartItem
-        );
-        return { cart: updatedCart };
-      } else {
-        return { cart: state.cart.filter((item) => item.id !== itemId) };
-      }
-    }),
-
-  // Action to authenticate/logout user
-  authenticateUser: () => {
-    console.log('User authenticated');
-    set({ isAuthenticated: true });
-  },
-
-  logoutUser: () => set({ isAuthenticated: false }),
-  toggleLogin: () => set((state) => ({ isLoginOpen: !state.isLoginOpen })), // Corrected to use isLoginOpen
-
-  // Action to clear the entire cart
-  clearCart: () => set({ cart: [] }),
-
-  // Action to toggle the cart visibility
-  toggleCart: () => set((state) => ({ isCartOpen: !state.isCartOpen })),
-
-  // Action to toggle user menu visibility
-  toggleMenu: () => set((state) => ({ isMenuOpen: !state.isMenuOpen })),
-
-  // Action to toggle filter menu
-  toggleFilter: () => set((state) => ({ filterActive: !state.filterActive })),
+// This is where the magic happens!
+export const useStore = create<StoreState>()((set, get, api) => ({
+  ...createCartSlice(set, get, api),
+  ...createUserSlice(set, get, api),
+  ...createUiSlice(set, get, api),
 }));
