@@ -37,7 +37,7 @@ const Login = () => {
     return (
       <div
         className="register-container flex flex-col gap-2 justify-between items-center min-h-[200px] max-w-md
-         rounded-xl shadow-2xl p-12 font-sans border border-orange-500 font-bold"
+         rounded-xl shadow-2xl  my-4 p-12 font-sans bg-slate-900 border border-orange-500 font-bold"
       >
         <header>
           <Header />
@@ -88,8 +88,8 @@ const Login = () => {
   const LoginPage = () => {
     return (
       <div
-        className="register-container flex flex-col justify-between items-center min-h-[200px] max-w-md
-         rounded-xl shadow-2xl p-12 gap-4 font-sans border-2 border-orange-500/40  font-bold"
+        className="register-container flex flex-col gap-2 justify-between items-center min-h-[200px] max-w-md
+         rounded-xl shadow-2xl  my-4 p-12 font-sans bg-slate-900 border border-orange-500 font-bold"
       >
         <header>
           <Header />
