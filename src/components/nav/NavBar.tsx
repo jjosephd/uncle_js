@@ -6,11 +6,14 @@ import { FaInstagram } from 'react-icons/fa';
 
 import ActiveCart from '../cart/ActiveCart';
 import UserMenu from '../user/UserMenu';
+import MobileNav from './MobileNav';
 
 const NavBar = () => {
   return (
     <nav className="navbar flex items-center text-white bg-orange-500 p-6 w-full font-extrabold mb-12">
-      <div className="flex lg:hidden">MenuBtn</div>
+      <div className="flex lg:hidden">
+        <MobileNav />
+      </div>
       <ul className="nav-links hidden lg:flex w-full navbar-start gap-2">
         {navLinks.map((link, index) => {
           if (link.name === 'Menu') {

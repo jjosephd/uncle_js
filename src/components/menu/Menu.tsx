@@ -1,10 +1,21 @@
-import { products } from '../../data/productData';
+import { products, type Product } from '../../data/productData';
 import { useNavigate } from 'react-router-dom';
 import MenuFilterButton from './MenuFilterButton';
 import MenuFilter from './MenuFilter';
+import { useStore } from '../../store/store';
 
 const Menu = () => {
   const navigate = useNavigate();
+  const { addToCart } = useStore();
+
+  const handleAddToCart = ({ item }: { item: Product }) => {
+    addToCart({
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      quantity: 1,
+    });
+  };
 
   // Group products by category
   const categorizedProducts: { [key: string]: typeof products } =
@@ -52,7 +63,10 @@ const Menu = () => {
                     <span className="text-white font-semibold text-lg">
                       ${item.price.toFixed(2)}
                     </span>
-                    <button className="btn btn-sm btn-primary">
+                    <button
+                      className="btn btn-sm btn-primary"
+                      onClick={() => handleAddToCart({ item })}
+                    >
                       Add to Cart
                     </button>
                   </div>

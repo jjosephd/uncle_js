@@ -37,7 +37,7 @@ const MenuFilter = () => {
             transition={{ type: 'spring', damping: 40, stiffness: 300 }}
             className="p-8 border border-slate-400/20 rounded-lg shadow-lg"
           >
-            <div className="text-center">
+            <div className="text-center text-white">
               <h2 className="text-2xl font-bold mb-4">Filter Options</h2>
               <ul className="space-y-2">
                 {uniqueCategories.map((category) => (

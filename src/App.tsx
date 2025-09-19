@@ -5,6 +5,7 @@ import NavBar from './components/nav/NavBar';
 import Footer from './components/footer/Footer';
 import Menu from './components/menu/Menu';
 import Login from './components/user/Login';
+import Cart from './components/cart/Cart';
 
 const HomeLayout = () => {
   return (
@@ -18,6 +19,7 @@ const HomeLayout = () => {
       <div className="overflow-hidden flex-grow flex justify-center pt-24">
         {/* Header Component */}
         <main className="overflow-y-auto flex flex-col justify-center items-center w-full">
+          <Cart />
           <Outlet />
         </main>
       </div>

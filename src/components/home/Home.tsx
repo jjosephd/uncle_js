@@ -2,7 +2,6 @@ import Hero from './Hero';
 import Favorites from './favorites/Favorites';
 import Promotion from './promotion/Promotion';
 import CustomerFavorites from './favorites/CustomerFavorites';
-import Cart from '../cart/Cart';
 import About from './about/About';
 
 const Home = () => {
@@ -10,9 +9,6 @@ const Home = () => {
     <div className="flex flex-col">
       {' '}
       {/* Add a flex column container */}
-      <section className="cart-menu flex flex-grow fixed z-50 justify-end w-full">
-        <Cart />
-      </section>
       <section id="hero-section" className="hero-section">
         <Hero />
       </section>
