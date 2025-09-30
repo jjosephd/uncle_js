@@ -6,7 +6,7 @@ import { useStore } from '../../store/store';
 
 const Menu = () => {
   const navigate = useNavigate();
-  const { addToCart } = useStore();
+  const { addToCart, activeCategory } = useStore();
 
   const handleAddToCart = ({ item }: { item: Product }) => {
     addToCart({
@@ -28,6 +28,10 @@ const Menu = () => {
       return acc;
     }, {} as { [key: string]: typeof products });
 
+  const filteredProducts = activeCategory
+    ? { [activeCategory]: categorizedProducts[activeCategory] || [] }
+    : categorizedProducts;
+
   return (
     <div className="w-screen">
       <div className="m-4  p-4">
@@ -35,14 +39,14 @@ const Menu = () => {
         <MenuFilter />
       </div>
 
-      {Object.keys(categorizedProducts).map((categoryName) => (
+      {Object.keys(filteredProducts).map((categoryName) => (
         <div key={categoryName}>
           <h2 className="text-3xl font-bold text-center text-orange-500 my-8">
             {categoryName}
           </h2>
           <hr className="border-t-2 border-orange-500/50 mb-8" />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 p-4">
-            {categorizedProducts[categoryName].map((item) => (
+            {filteredProducts[categoryName].map((item) => (
               <div
                 key={item.id}
                 className="bg-slate-800 rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl border border-orange-500/20"
@@ -51,6 +55,7 @@ const Menu = () => {
                   src={item.imageUrl}
                   alt={item.name}
                   className="w-full h-48 object-cover"
+                  loading="lazy"
                 />
                 <div className="p-4">
                   <h3 className="text-xl font-bold text-orange-500 mb-2">

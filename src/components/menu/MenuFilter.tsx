@@ -8,16 +8,17 @@ const uniqueCategories = [
 ];
 
 const MenuFilter = () => {
-  const { filterActive } = useStore();
+  const { filterActive, activeCategory } = useStore();
 
   const handleFilterClick = (category: string) => {
-    // Implement your state management logic here to filter the products
-    // For example, you would set a state value in your store based on the category clicked
     console.log(`Filtering by: ${category}`);
+    useStore
+      .getState()
+      .setActiveCategory(category === activeCategory ? null : category);
   };
 
   const handleResetFilterClick = () => {
-    // Implement your state management logic here to reset the filters
+    useStore.getState().setActiveCategory(null);
     console.log('Resetting filters');
   };
 

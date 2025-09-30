@@ -29,6 +29,8 @@ export interface UiSlice {
   toggleMenu: () => void;
   filterActive: boolean;
   toggleFilter: () => void;
+  activeCategory: string | null;
+  setActiveCategory: (category: string | null) => void;
 }
 
 export type StoreState = CartSlice & UserSlice & UiSlice;
