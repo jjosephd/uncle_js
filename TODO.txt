@@ -5,4 +5,4 @@ TODO:
 - Create reservation form component to allow users to submit reservations for dining in
 - Create 'newsletter signup' component to allow users to sign up for the newsletter
 - Create 'contact' component to allow users to contact the restaurant
-- Profile dropdown coomponent reviews, reservations, login
+- Profile dropdown component reviews, reservations, login

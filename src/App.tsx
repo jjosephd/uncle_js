@@ -6,6 +6,7 @@ import Footer from './components/footer/Footer';
 import Menu from './components/menu/Menu';
 import Login from './components/user/Login';
 import Cart from './components/cart/Cart';
+import Reviews from './components/user/Reviews';
 
 const HomeLayout = () => {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route index element={<Home />}></Route>
           <Route path={'/menu'} element={<Menu />}></Route>
           <Route path={'/login'} element={<Login />}></Route>
+          <Route path={'/reviews'} element={<Reviews />}></Route>
         </Route>
       </Routes>
     </>

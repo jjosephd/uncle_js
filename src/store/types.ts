@@ -33,4 +33,19 @@ export interface UiSlice {
   setActiveCategory: (category: string | null) => void;
 }
 
-export type StoreState = CartSlice & UserSlice & UiSlice;
+export interface ReviewItem {
+  id: number;
+  name: string;
+  email: string;
+  review: string;
+  submittedAt: Date; // Field to track when the review was submitted
+}
+
+export interface ReviewSlice {
+  reviews: ReviewItem[];
+  addReview: (review: ReviewItem) => void;
+}
+  
+
+
+export type StoreState = CartSlice & UserSlice & UiSlice & ReviewSlice;
