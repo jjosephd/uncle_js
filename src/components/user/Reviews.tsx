@@ -32,7 +32,7 @@ const Reviews = () => {
   }
   return (
     <div>
-      <header className="flex flex-col text-white items-center">
+      <header className="flex flex-col text-white items-center justify-center">
         <h1 className="text-2xl">Reviews</h1>
         <h2 className="text-xl">Write a review</h2>
       </header>
