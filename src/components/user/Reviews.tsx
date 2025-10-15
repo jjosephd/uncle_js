@@ -59,9 +59,11 @@ const Reviews = () => {
           ))
         )}
       </div>
+      <div className="flex justify-center">
       <button className="btn btn-warning" onClick={() => navigate(-1)}>
         Previous Page
       </button>
+      </div>
     </div>
   );
 };
