@@ -7,7 +7,7 @@ const Footer = () => {
       <ul className="flex flex-col sm:flex-row sm:mx-auto justify-between sm:gap-6 p-4">
         {navLinks.map((link, index) => (
           <li key={index} className="">
-            <NavLink to={''}>
+            <NavLink to={link.to}>
               <span className="uppercase text-white text-2xl sm:text-4xl font-extrabold hover:cursor-pointer">
                 {link.name}
               </span>
@@ -18,7 +18,7 @@ const Footer = () => {
       <ul className="flex flex-col sm:flex-row sm:mx-auto justify-between gap-6 p-4">
         {subLinks.map((link, index) => (
           <li key={index} className="">
-            <NavLink to={''}>
+            <NavLink to={link.link}>
               <span className="text-white font-extrabold hover:cursor-pointer">
                 {link.name}
               </span>
