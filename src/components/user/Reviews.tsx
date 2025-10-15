@@ -5,6 +5,7 @@ import ReviewCard from './ReviewCard';
 import Loading from './Loading';
 
 const Reviews = () => {
+  const navigate = useNavigate();
   const addReview = useStore((state) => state.addReview)
   const reviews = useStore((state) => state.reviews)
   const [loading, setLoading] = useState(false);
