@@ -7,7 +7,7 @@ const HeroBar = () => {
       <ul className="flex flex-col sm:flex-row justify-between gap-6 items-center">
         <li className="flex items-center">
           <div
-            className="uppercase text-2xl sm:text-3xl font-extrabold
+            className="uppercase text-sm sm:text-3xl font-extrabold
             "
           >
             Order Now
