@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom"
 
-const DropdownMenu = ({menuOpen}: {menuOpen: boolean}) => {
+const DropdownMenu = ({menuOpen, setShowMenu}: {menuOpen: boolean, setShowMenu: (showMenu: boolean) => void}) => {
   return (
     <>
       {menuOpen && (
@@ -9,6 +9,7 @@ const DropdownMenu = ({menuOpen}: {menuOpen: boolean}) => {
             <NavLink
               to="/login"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              onClick={() => setShowMenu(false)}
             >
               Login
             </NavLink>
@@ -16,6 +17,7 @@ const DropdownMenu = ({menuOpen}: {menuOpen: boolean}) => {
             <NavLink
               to="/reviews"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              onClick={() => setShowMenu(false)}
             >
               Reviews
             </NavLink>

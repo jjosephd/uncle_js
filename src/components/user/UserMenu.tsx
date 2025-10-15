@@ -18,7 +18,7 @@ const UserMenu = () => {
               <FaAngleDown className="text-xs hover:cursor-pointer" />
             </div>
         </div>
-          <DropdownMenu menuOpen={showMenu}/>
+          <DropdownMenu menuOpen={showMenu} setShowMenu={setShowMenu}/>
       </div>
     </>
   );
