@@ -57,6 +57,9 @@ const Reviews = () => {
           ))
         )}
       </div>
+      <button className="btn btn-warning" onClick={() => navigate(-1)}>
+        Previous Page
+      </button>
     </div>
   );
 };
