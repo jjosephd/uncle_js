@@ -18,7 +18,7 @@ const Footer = () => {
       <ul className="flex flex-col sm:flex-row sm:mx-auto justify-between gap-6 p-4">
         {subLinks.map((link, index) => (
           <li key={index} className="">
-            <NavLink to={link.link}>
+            <NavLink to={'#'}>
               <span className="text-white font-extrabold hover:cursor-pointer">
                 {link.name}
               </span>
