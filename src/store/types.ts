@@ -38,6 +38,7 @@ export interface ReviewItem {
   name: string;
   email: string;
   review: string;
+  rating: number;
   submittedAt: Date; // Field to track when the review was submitted
 }
 

@@ -9,6 +9,8 @@ const Reviews = () => {
   const addReview = useStore((state) => state.addReview)
   const reviews = useStore((state) => state.reviews)
   const [loading, setLoading] = useState(false);
+  const [selectedRating, setSelectedRating] = useState(0);
+  const [hoveredRating, setHoveredRating] = useState(0);
 
   const handleAddReviews = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -24,45 +26,148 @@ const Reviews = () => {
         name: name as string,
         email: email as string,
         review: review as string,
+        rating: selectedRating,
         submittedAt: new Date(),
       })
       setLoading(false);
+      setSelectedRating(0);
       e.currentTarget.reset();
     }, 1000);
   }
   return (
-    <div>
-      <header className="flex flex-col text-white items-center justify-center">
-        <h1 className="text-2xl">Reviews</h1>
-        <h2 className="text-xl">Write a review</h2>
-      </header>
-      <div className="bg-white p-4 rounded-lg min-w-xl">
+    <div className='min-h-screen p-4 sm:p-6 lg:p-8'>
+      <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
+        {/* Header */}
+        <header className="flex flex-col text-white items-center justify-center space-y-2 sm:space-y-3">
+          <h1 className="text-3xl sm:text-4xl font-bold">Reviews</h1>
+          <h2 className="text-lg sm:text-xl text-center">Tell us about your visit!</h2>
+        </header>
 
-      <form action="submit" className="flex flex-col gap-2" onSubmit={handleAddReviews}>
-        <input type="text" name="name" placeholder="Name" className="border rounded-lg px-2 py-1" required />
-        <input type="email" name="email" placeholder="Email" className="border rounded-lg px-2 py-1" required />
-        <textarea name="review" placeholder="Review" className="border rounded-lg px-2 py-1" required />
-        <button type="submit" className='btn btn-primary rounded-lg px-2 py-1'>Submit</button>
-      </form>
-      </div>
-     
-      <div>
-        <h2 className="text-xl">Reviews</h2>
-         {loading && (
-        <Loading/>
-        )}
-        {reviews.length === 0 ? (
-          <p className="text-gray-600">No reviews yet</p>
-        ) : (
-          reviews.map((review) => (
-            <ReviewCard key={review.id} review={review} />
-          ))
-        )}
-      </div>
-      <div className="flex justify-center">
-      <button className="btn btn-warning" onClick={() => navigate(-1)}>
-        Previous Page
-      </button>
+        {/* Form Card */}
+        <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-lg">
+          <form onSubmit={handleAddReviews} className="space-y-4 sm:space-y-5">
+            {/* Name Input */}
+            <div className="space-y-2">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your name"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 sm:px-4 sm:py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none text-base"
+                required
+              />
+            </div>
+
+            {/* Email Input */}
+            <div className="space-y-2">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="your.email@example.com"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 sm:px-4 sm:py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none text-base"
+                required
+              />
+            </div>
+
+            {/* Review Textarea */}
+            <div className="space-y-2">
+              <label htmlFor="review" className="block text-sm font-medium text-gray-700">
+                Your Review
+              </label>
+              <textarea
+                id="review"
+                name="review"
+                placeholder="Share your experience with us..."
+                rows={4}
+                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 sm:px-4 sm:py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none resize-none text-base"
+                required
+              />
+            </div>
+
+            {/* Star Rating */}
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-gray-700">
+                Rating {selectedRating > 0 && `(${selectedRating} star${selectedRating !== 1 ? 's' : ''})`}
+              </label>
+              <div className="flex items-center gap-2 sm:gap-3">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <button
+                    key={star}
+                    type="button"
+                    onClick={() => setSelectedRating(star)}
+                    onMouseEnter={() => setHoveredRating(star)}
+                    onMouseLeave={() => setHoveredRating(0)}
+                    className="transition-transform hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded"
+                    aria-label={`Rate ${star} star${star !== 1 ? 's' : ''}`}
+                  >
+                    <svg
+                      className={`w-8 h-8 sm:w-10 sm:h-10 transition-colors ${
+                        star <= (hoveredRating || selectedRating)
+                          ? 'fill-yellow-400 text-yellow-400'
+                          : 'fill-none text-gray-300'
+                      }`}
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  </button>
+                ))}
+              </div>
+              {selectedRating === 0 && (
+                <p className="text-sm text-red-500">Please select a rating</p>
+              )}
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={loading || selectedRating === 0}
+              className="w-full btn btn-primary rounded-lg px-4 py-3 sm:py-3.5 text-base sm:text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:shadow-md active:scale-[0.98]"
+            >
+              {loading ? 'Submitting...' : 'Submit Review'}
+            </button>
+          </form>
+        </div>
+
+        {/* Reviews List */}
+        <div className="space-y-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white text-center">Customer Reviews</h2>
+          {loading && (
+            <div className="flex justify-center py-8">
+              <Loading />
+            </div>
+          )}
+          {!loading && reviews.length === 0 ? (
+            <div className="bg-white/90 rounded-xl p-8 sm:p-12 text-center">
+              <p className="text-gray-600 text-lg">No reviews yet. Be the first to share your experience!</p>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {reviews.map((review) => (
+                <ReviewCard key={review.id} review={review} />
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Navigation */}
+        <div className="flex justify-center pt-4 pb-8">
+          <button
+            className="btn btn-warning rounded-lg px-6 py-3 text-base font-semibold hover:shadow-md transition-all active:scale-95"
+            onClick={() => navigate(-1)}
+          >
+            ← Previous Page
+          </button>
+        </div>
       </div>
     </div>
   );

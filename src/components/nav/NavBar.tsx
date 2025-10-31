@@ -16,30 +16,30 @@ const NavBar = () => {
       </div>
       <ul className="nav-links hidden lg:flex w-full navbar-start gap-2">
         {navLinks.map((link, index) => {
-          if (link.name === 'Menu') {
-            return (
-              <li key={index}>
-                <NavLink to="/menu">
+          const isRouterLink = link.name === 'Home' || link.name === 'Menu';
+          const linkPath = link.name === 'Home' ? '/' : link.name === 'Menu' ? '/menu' : link.to;
+          
+          return (
+            <li key={index}>
+              {isRouterLink ? (
+                <NavLink to={linkPath}>
                   <span className="uppercase text-white text-md sm:text-xl font-extrabold hover:cursor-pointer hover:text-green-900">
                     {link.name}
                   </span>
                 </NavLink>
-              </li>
-            );
-          }
-          return (
-            <li key={index}>
-              <Link
-                to={link.to}
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={500}
-              >
-                <span className="uppercase text-white text-md sm:text-xl font-extrabold hover:cursor-pointer hover:text-green-900">
-                  {link.name}
-                </span>
-              </Link>
+              ) : (
+                <Link
+                  to={link.to}
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                >
+                  <span className="uppercase text-white text-md sm:text-xl font-extrabold hover:cursor-pointer hover:text-green-900">
+                    {link.name}
+                  </span>
+                </Link>
+              )}
             </li>
           );
         })}
@@ -57,7 +57,7 @@ const NavBar = () => {
         </li>
         <li className="order-list-item">
           <NavLink to="/">
-            <div className="order-btn border border-black border-b-6 border-r-6 rounded-full text-lg sm:text-2xl py-1 px-2">
+            <div className="order-btn border border-black border-b-6 border-r-6 rounded-full text-xs sm:text-lg py-1 px-2">
               Order Now
             </div>
           </NavLink>

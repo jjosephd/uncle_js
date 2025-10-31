@@ -2,7 +2,6 @@ TODO:
 - [x] Create reviews component to display reviews for a specific product
 - [x] Create review form component to allow users to submit reviews for a specific product
 - [ ] Create reservations component to allow users to make reservations for dining in
-- [ ] Create reservation form component to allow users to submit reservations for dining in
-- [ ] Create 'newsletter signup' component to allow users to sign up for the newsletter
-- [ ] Create 'contact' component to allow users to contact the restaurant
-- [ ] Profile dropdown component reviews, reservations, login
+- [ ] Create mobile dropdown menu for reviews, reservations, and login
+- [x] Add star ratings to reviews
+- [ ] Implement Google map api for location
