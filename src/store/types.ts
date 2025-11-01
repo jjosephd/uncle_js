@@ -46,6 +46,22 @@ export interface ReviewSlice {
   reviews: ReviewItem[];
   addReview: (review: ReviewItem) => void;
 }
+
+export interface ReservationItem{
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  dateTime: string;
+}
+
+export interface ReservationSlice {
+  reservations: ReservationItem[];
+  addReservation: (reservation: Omit<ReservationItem, "id">) => void;
+  removeReservation: (id: string) => void;
+  updateReservation: (id: string, updated: Partial<ReservationItem>) => void;
+}
   
 
 
