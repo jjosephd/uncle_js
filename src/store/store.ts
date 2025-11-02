@@ -12,6 +12,7 @@ import { createCartSlice } from './cartStore';
 import { createUserSlice } from './userStore';
 import { createUiSlice } from './uiStore';
 import { createReviewSlice } from './reviewsStore';
+import { createReservationSlice } from './reservationStore';
 
 // This is where the magic happens!
 export const useStore = create<StoreState>()((set, get, api) => ({
@@ -19,4 +20,5 @@ export const useStore = create<StoreState>()((set, get, api) => ({
   ...createUserSlice(set, get, api),
   ...createUiSlice(set, get, api),
   ...createReviewSlice(set, get, api),
+  ...createReservationSlice(set,get,api)
 }));

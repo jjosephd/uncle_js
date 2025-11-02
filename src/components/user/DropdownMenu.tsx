@@ -23,11 +23,11 @@ const DropdownMenu = ({menuOpen, setShowMenu}: {menuOpen: boolean, setShowMenu: 
             </NavLink>
 
             <NavLink
-              to="/reviews"
+              to="/reservations"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               onClick={() => setShowMenu(false)}
             >
-              Reviews
+              Reservations
             </NavLink>
 
           </div>

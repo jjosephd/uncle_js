@@ -48,7 +48,7 @@ export interface ReviewSlice {
 }
 
 export interface ReservationItem{
-  id: number;
+  id: string;  // Changed from number to string to support UUID
   firstName: string;
   lastName: string;
   email: string;
@@ -65,4 +65,4 @@ export interface ReservationSlice {
   
 
 
-export type StoreState = CartSlice & UserSlice & UiSlice & ReviewSlice;
+export type StoreState = CartSlice & UserSlice & UiSlice & ReviewSlice & ReservationSlice;
