@@ -10,7 +10,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = (username: string, password: string) => {
+  const handleLogin = (username: string) => {
     setIsLoading(true);
     // Only authenticate if username is provided
     if (username.trim()) {
