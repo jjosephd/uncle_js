@@ -1,9 +1,135 @@
+import { useState } from 'react';
 import { useStore } from "../../store/store";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from 'react-toastify';
+import type { ReservationItem } from "../../store/types";
+
+const UpdateRegistrationButton = ({ 
+  reservation, 
+  isEditing,
+  onEdit, 
+  onCancel,
+  onSave
+}: { 
+  reservation: ReservationItem;
+  isEditing: boolean;
+  onEdit: () => void;
+  onCancel: () => void;
+  onSave: (updates: Partial<Omit<ReservationItem, 'id'>>) => void;
+}) => {
+  const [formData, setFormData] = useState<Omit<ReservationItem, 'id'>>({
+    firstName: reservation.firstName,
+    lastName: reservation.lastName,
+    email: reservation.email,
+    phoneNumber: reservation.phoneNumber,
+    dateTime: reservation.dateTime,
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSave(formData);
+  };
+
+  if (isEditing) {
+    return (
+      <form onSubmit={handleSubmit} className="mt-4 space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm text-gray-400 mb-1">First Name</label>
+            <input
+              type="text"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              className="w-full px-3 py-2 rounded bg-gray-700 text-white"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm text-gray-400 mb-1">Last Name</label>
+            <input
+              type="text"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              className="w-full px-3 py-2 rounded bg-gray-700 text-white"
+              required
+            />
+          </div>
+        </div>
+        <div>
+          <label className="block text-sm text-gray-400 mb-1">Email</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full px-3 py-2 rounded bg-gray-700 text-white"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-sm text-gray-400 mb-1">Phone</label>
+          <input
+            type="tel"
+            name="phoneNumber"
+            value={formData.phoneNumber}
+            onChange={handleChange}
+            className="w-full px-3 py-2 rounded bg-gray-700 text-white"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-sm text-gray-400 mb-1">Date & Time</label>
+          <input
+            type="datetime-local"
+            name="dateTime"
+            value={formData.dateTime}
+            onChange={handleChange}
+            className="w-full px-3 py-2 rounded bg-gray-700 text-white"
+            required
+          />
+        </div>
+        <div className="flex justify-end space-x-2 pt-2">
+          <button
+            type="button"
+            onClick={onCancel}
+            className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            className="px-4 py-2 text-sm font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600"
+          >
+            Save Changes
+          </button>
+        </div>
+      </form>
+    );
+  }
+
+  return (
+    <button
+      onClick={onEdit}
+      className="bg-orange-500 hover:bg-orange-600 text-gray-900 font-bold py-2 px-4 rounded-md transition duration-200 transform hover:scale-105 btn btn-xs"
+    >
+      Update
+    </button>
+  );
+}
 
 const Reservations = () => {
-  const { reservations, addReservation } = useStore();
+  const { reservations, addReservation, updateReservation } = useStore();
+  const [editingId, setEditingId] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -16,6 +142,7 @@ const Reservations = () => {
       phoneNumber: formData.get("phoneNumber") as string,
       dateTime: formData.get("dateTime") as string,
     };
+
     addReservation(reservation);
     toast.success(`${reservation.firstName} ${reservation.lastName} has been added to the reservations list.`, {
      
@@ -26,6 +153,7 @@ const Reservations = () => {
       draggable: true,
       progress: undefined,
       theme: "dark",
+      position: "bottom-right",
     });
     e.currentTarget.reset();
   };
@@ -109,12 +237,44 @@ const Reservations = () => {
                   key={reservation.id} 
                   className="bg-gray-800 p-4 rounded-lg shadow hover:bg-gray-750 transition"
                 >
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <span className="font-medium">{reservation.firstName} {reservation.lastName}</span>
-                      <p className="text-sm text-gray-400">{new Date(reservation.dateTime).toLocaleString()}</p>
+                  <div>
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <span className="font-medium">{reservation.firstName} {reservation.lastName}</span>
+                        <p className="text-sm text-gray-400">{reservation.email}</p>
+                        <p className="text-sm text-gray-400">{reservation.phoneNumber}</p>
+                        <p className="text-sm text-gray-400">{new Date(reservation.dateTime).toLocaleString()}</p>
+                      </div>
+                      {editingId !== reservation.id && (
+                        <div className="flex items-center space-x-2 flex-col space-y-2">
+                          <span className="text-orange-500 text-sm">Confirmed</span>
+                          <UpdateRegistrationButton 
+                            reservation={reservation}
+                            isEditing={false}
+                            onEdit={() => setEditingId(reservation.id)}
+                            onCancel={() => {}}
+                            onSave={() => {}}
+                          />
+                        </div>
+                      )}
                     </div>
-                    <span className="text-orange-500 text-sm">Confirmed</span>
+                    {editingId === reservation.id && (
+                      <UpdateRegistrationButton 
+                        reservation={reservation}
+                        isEditing={true}
+                        onEdit={() => {}}
+                        onCancel={() => setEditingId(null)}
+                        onSave={(updates) => {
+                          updateReservation(reservation.id, updates);
+                          setEditingId(null);
+                          toast.success('Reservation updated successfully!', {
+                            autoClose: 3000,
+                            theme: 'dark',
+                            position: 'bottom-right'
+                          });
+                        }}
+                      />
+                    )}
                   </div>
                 </li>
               ))
