@@ -3,6 +3,7 @@ import Favorites from './favorites/Favorites';
 import Promotion from './promotion/Promotion';
 import CustomerFavorites from './favorites/CustomerFavorites';
 import About from './about/About';
+import RestaurantMap from '../map/RestaurantMap';
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       </section>
       <section id="about-section" className="about-section">
         <About />
+        <RestaurantMap/>
       </section>
       <section id="favorites-section" className="favorites-section">
         <Favorites />

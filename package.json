@@ -10,10 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.20.7",
     "@tailwindcss/vite": "^4.1.12",
     "@types/react-toastify": "^4.0.2",
     "@types/uuid": "^10.0.0",
     "daisyui": "^5.0.50",
+    "dotenv": "^17.2.3",
     "framer-motion": "^12.23.12",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
