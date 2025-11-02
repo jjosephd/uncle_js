@@ -18,7 +18,7 @@ const RestaurantMap: React.FC = () => {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
   if (!apiKey) {
-    console.error('Google Maps API key is not set');
+    console.error('Google Maps API key is not set!');
     return <div className="text-white">Map cannot be loaded - API key missing</div>;
   }
 
