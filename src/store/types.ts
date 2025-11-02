@@ -19,8 +19,9 @@ export interface CartSlice {
 export interface UserSlice {
   isAuthenticated: boolean;
   isLoginOpen: boolean;
+  username: string | null;
   toggleLogin: () => void;
-  authenticateUser: () => void;
+  authenticateUser: (username: string) => void;
   logoutUser: () => void;
 }
 

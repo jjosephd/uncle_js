@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../../store/store';
 import ReviewCard from './ReviewCard';
@@ -6,32 +6,58 @@ import Loading from './Loading';
 
 const Reviews = () => {
   const navigate = useNavigate();
-  const addReview = useStore((state) => state.addReview)
-  const reviews = useStore((state) => state.reviews)
+  const addReview = useStore((state) => state.addReview);
+  const reviews = useStore((state) => state.reviews);
+  const isAuthenticated = useStore((state) => state.isAuthenticated);
+  const username = useStore((state) => state.username);
   const [loading, setLoading] = useState(false);
   const [selectedRating, setSelectedRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    review: ''
+  });
+
+  // Auto-populate name if user is authenticated
+  useEffect(() => {
+    if (isAuthenticated && username) {
+      setFormData(prev => ({
+        ...prev,
+        name: username
+      }));
+    }
+  }, [isAuthenticated, username]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
   const handleAddReviews = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-    const name = formData.get('name')
-    const email = formData.get('email')
-    const review = formData.get('review')
+    e.preventDefault();
     
     setLoading(true);
     setTimeout(() => {
       addReview({
         id: reviews.length + 1,
-        name: name as string,
-        email: email as string,
-        review: review as string,
+        name: formData.name,
+        email: formData.email,
+        review: formData.review,
         rating: selectedRating,
         submittedAt: new Date(),
-      })
+      });
+      
       setLoading(false);
       setSelectedRating(0);
-      e.currentTarget.reset();
+      setFormData({
+        name: isAuthenticated && username ? username : '',
+        email: '',
+        review: ''
+      });
     }, 1000);
   }
   return (
@@ -55,9 +81,12 @@ const Reviews = () => {
                 type="text"
                 id="name"
                 name="name"
+                value={isAuthenticated && username ? username : formData.name}
+                onChange={handleInputChange}
                 placeholder="Enter your name"
-                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 sm:px-4 sm:py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none text-base"
+                className="w-full text-slate-900 border border-gray-300 rounded-lg px-3 py-2.5 sm:px-4 sm:py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none text-base"
                 required
+                disabled={isAuthenticated && !!username}
               />
             </div>
 
@@ -70,8 +99,10 @@ const Reviews = () => {
                 type="email"
                 id="email"
                 name="email"
+                value={formData.email}
+                onChange={handleInputChange}
                 placeholder="your.email@example.com"
-                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 sm:px-4 sm:py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none text-base"
+                className="w-full border text-slate-900 border-gray-300 rounded-lg px-3 py-2.5 sm:px-4 sm:py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none text-base"
                 required
               />
             </div>
@@ -84,9 +115,11 @@ const Reviews = () => {
               <textarea
                 id="review"
                 name="review"
+                value={formData.review}
+                onChange={handleInputChange}
                 placeholder="Share your experience with us..."
                 rows={4}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 sm:px-4 sm:py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none resize-none text-base"
+                className="w-full border text-slate-900 border-gray-300 rounded-lg px-3 py-2.5 sm:px-4 sm:py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none resize-none text-base"
                 required
               />
             </div>

@@ -144,7 +144,8 @@ const Reservations = () => {
     };
 
     addReservation(reservation);
-    toast.success(`${reservation.firstName} ${reservation.lastName} has been added to the reservations list.`, {
+    toast.success(
+      `${reservation.firstName} ${reservation.lastName} has been added to the reservations list.`, {
      
       autoClose: 5000,
       hideProgressBar: false,

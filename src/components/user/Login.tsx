@@ -10,12 +10,15 @@ const Login = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleLogin = (username: string, password: string) => {
     setIsLoading(true);
-    authenticateUser();
+    // Only authenticate if username is provided
+    if (username.trim()) {
+      authenticateUser(username.trim());
+    } else {
+      authenticateUser('Guest'); // Fallback to 'Guest' if no username provided
+    }
     setTimeout(() => {
-      // Simulate API call or authentication process
       setIsLoading(false);
       navigate('/');
     }, 1000);
@@ -37,37 +40,81 @@ const Login = () => {
 
   // Register component for new user registration
   const Register = () => {
+    const [formData, setFormData] = useState({
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target;
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+      e.preventDefault();
+      handleLogin(formData.username, formData.password);
+    };
+
     return (
       <div
         className="register-container flex flex-col gap-2 justify-between items-center min-h-[200px] max-w-md
-         rounded-xl shadow-2xl  my-4 p-12 font-sans bg-slate-900 border border-orange-500/20 font-bold"
+         rounded-xl shadow-2xl my-4 p-12 font-sans bg-slate-900 border border-orange-500/20 font-bold"
       >
         <header>
           <Header />
-        </header>{' '}
+        </header>
         <div className="text-white">Register</div>
-        <div className="register-form">
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <input
-              type="text"
-              placeholder="Username"
-              className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
-            />
-            <input
-              type="password"
-              placeholder="Confirm Password"
-              className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
-            />
+        <div className="register-form w-full">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
+            <div className="form-group w-full">
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={formData.username}
+                onChange={handleChange}
+                className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
+                required
+              />
+            </div>
+            <div className="form-group w-full">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+                className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
+                required
+              />
+            </div>
+            <div className="form-group w-full">
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleChange}
+                className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
+                required
+              />
+            </div>
+            <div className="form-group w-full">
+              <input
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
+                required
+              />
+            </div>
             <button
               className={`btn btn-primary ${isLoading ? 'loading' : ''}`}
               type="submit"
@@ -90,28 +137,58 @@ const Login = () => {
 
   // LoginPage component for existing user login
   const LoginPage = () => {
+    const [formData, setFormData] = useState({
+      username: '',
+      password: ''
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target;
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+      e.preventDefault();
+      handleLogin(formData.username, formData.password);
+    };
+
     return (
       <div
         className="register-container flex flex-col gap-2 justify-between items-center min-h-[200px] max-w-md
-         rounded-xl shadow-2xl  my-4 p-12 font-sans bg-slate-900 border border-orange-500/20 font-bold"
+         rounded-xl shadow-2xl my-4 p-12 font-sans bg-slate-900 border border-orange-500/20 font-bold"
       >
         <header>
           <Header />
-        </header>{' '}
+        </header>
         <div className="text-white">Login</div>
-        <div className="register-form">
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <input
-              type="text"
-              placeholder="Username"
-              className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
-            />
+        <div className="register-form w-full">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
+            <div className="form-group w-full">
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={formData.username}
+                onChange={handleChange}
+                className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
+                required
+              />
+            </div>
 
-            <input
-              type="password"
-              placeholder="Password"
-              className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
-            />
+            <div className="form-group w-full">
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleChange}
+                className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
+                required
+              />
+            </div>
 
             <button
               className={`btn btn-primary ${isLoading ? 'loading' : ''}`}
