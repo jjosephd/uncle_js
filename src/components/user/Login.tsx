@@ -10,7 +10,8 @@ const Login = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = (username: string) => {
+  const handleLogin = (username: string, password: string) => {
+    const pass = password;
     setIsLoading(true);
     // Only authenticate if username is provided
     if (username.trim()) {
@@ -21,6 +22,7 @@ const Login = () => {
     setTimeout(() => {
       setIsLoading(false);
       navigate('/');
+      console.log(pass);
     }, 1000);
   };
 
