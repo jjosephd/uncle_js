@@ -80,7 +80,7 @@ const Login = () => {
                 placeholder="Username"
                 value={formData.username}
                 onChange={handleChange}
-                className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
+                className="input input-bordered w-full  text-black dark:text-white focus:outline-none"
                 required
               />
             </div>
@@ -91,7 +91,7 @@ const Login = () => {
                 placeholder="Email"
                 value={formData.email}
                 onChange={handleChange}
-                className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
+                className="input input-bordered w-full  text-black dark:text-white focus:outline-none"
                 required
               />
             </div>
@@ -102,7 +102,7 @@ const Login = () => {
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}
-                className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
+                className="input input-bordered w-full  text-black dark:text-white focus:outline-none"
                 required
               />
             </div>
@@ -113,7 +113,7 @@ const Login = () => {
                 placeholder="Confirm Password"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
+                className="input input-bordered w-full  text-black dark:text-white focus:outline-none"
                 required
               />
             </div>
@@ -175,7 +175,7 @@ const Login = () => {
                 placeholder="Username"
                 value={formData.username}
                 onChange={handleChange}
-                className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
+                className="input input-bordered w-full  text-black dark:text-white focus:outline-none"
                 required
               />
             </div>
@@ -187,7 +187,7 @@ const Login = () => {
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}
-                className="input input-bordered w-full max-w-xs text-black dark:text-white focus:outline-none"
+                className="input input-bordered w-full  text-black dark:text-white focus:outline-none"
                 required
               />
             </div>
