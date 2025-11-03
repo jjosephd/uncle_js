@@ -21,7 +21,7 @@ export const customerFavorites: CustomerFavorite[] = [
     id: 2,
     name: 'Saturday Smash',
     imageUrl: nightlifeImg,
-    description: 'Chicken tenders, white cheddar mac & cheese, fries, ranch, 2 dipping sauces',
+    description: 'Saturdays just for you! Join us for live music and half off drinks from 6pm to 10pm!',
     price: 14.99,
     proteins: ['Tickets Required']
   },
@@ -29,7 +29,7 @@ export const customerFavorites: CustomerFavorite[] = [
     id: 3,
     name: 'After Hours Casino',
     imageUrl: partyImg,
-    description: 'Chicken, bacon, cheese, ranch, chile spices',
+    description: 'Make your after hours experience unforgettable with our casino-style games and live music!',
     price: 12.99,
     proteins: ['18+', 'Tickets Required']
   },
