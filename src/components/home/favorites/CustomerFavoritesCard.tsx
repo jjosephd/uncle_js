@@ -58,7 +58,7 @@ const CustomerFavoritesCard = ({ item }: { item: CustomerFavorite }) => {
         {item.price >= 0 && (
           <button 
             className="w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-2 px-4 rounded-lg transition-colors"
-            onClick={handleAddToCart}
+            onClick={() => alert('More Information Coming Soon!')}
           >
             Click For More Info
           </button>
