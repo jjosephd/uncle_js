@@ -1,4 +1,4 @@
-import { useStore } from '../../../store/store';
+//import { useStore } from '../../../store/store';
 import type { CustomerFavorite } from '../../../data/customerFavorites';
 
 const proteinColors: Record<string, string> = {
@@ -9,16 +9,16 @@ const proteinColors: Record<string, string> = {
 };
 
 const CustomerFavoritesCard = ({ item }: { item: CustomerFavorite }) => {
-  const { addToCart } = useStore();
+  //const { addToCart } = useStore();
 
-  const handleAddToCart = () => {
+  /*const handleAddToCart = () => {
     addToCart({
       id: item.id,
       name: item.name,
       price: item.price,
       quantity: 1,
     });
-  };
+  };*/
 
   return (
     <div className="relative w-full h-full border-2 border-slate-500/20 text-white rounded-lg overflow-hidden flex flex-col">
