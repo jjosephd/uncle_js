@@ -1,14 +1,14 @@
 export const navLinks = [
   {
     name: 'Home',
-    to: '',
+    to: '/',
   },
   {
     name: 'About',
     to: 'about-section',
   },
   {
-    name: 'Favorites',
+    name: 'Events',
     to: 'customer-favorites-section',
   },
   {

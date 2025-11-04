@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { navLinks, subLinks } from '../../data/navLinks';
 import { Menu, X } from 'lucide-react';
 
@@ -15,6 +16,7 @@ interface SubLink {
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -44,11 +46,22 @@ const MobileNav = () => {
     };
   }, [isOpen]);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const handleNavigation = (link: NavLink) => {
+    const isRouterLink = link.name === 'Home' || link.name === 'Menu';
+    const linkPath = link.name === 'Home' ? '/' : link.name === 'Menu' ? '/menu' : link.to;
+    
+    if (isRouterLink) {
+      navigate(linkPath);
+    } else {
+      // Close menu first for better UX
       setIsOpen(false);
+      // Small delay to allow menu to close before scrolling
+      setTimeout(() => {
+        const element = document.getElementById(link.to);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
     }
   };
 
@@ -107,7 +120,7 @@ const MobileNav = () => {
                   {navLinks.map((link: NavLink) => (
                     <button
                       key={link.name}
-                      onClick={() => scrollToSection(link.to)}
+                      onClick={() => handleNavigation(link)}
                       className="w-full text-left px-4 py-3 text-gray-300 hover:bg-gray-800 hover:text-white rounded-lg transition-all duration-200 flex items-center group"
                     >
                       <span className="group-hover:translate-x-1 transition-transform duration-200">

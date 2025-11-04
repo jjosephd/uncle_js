@@ -70,7 +70,7 @@ const Reviews = () => {
         </header>
 
         {/* Form Card */}
-        <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-lg">
+        <div className="bg-gray-900 border-r border-gray-800 z-50 shadow-2xl p-4 sm:p-6 lg:p-8 rounded-xl">
           <form onSubmit={handleAddReviews} className="space-y-4 sm:space-y-5">
             {/* Name Input */}
             <div className="space-y-2">

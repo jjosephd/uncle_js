@@ -21,7 +21,7 @@ const CustomerFavoritesCard = ({ item }: { item: CustomerFavorite }) => {
   };*/
 
   return (
-    <div className="relative w-full h-full border-2 border-slate-500/20 text-white rounded-lg overflow-hidden flex flex-col">
+    <div className="relative w-full h-[250px] border-2 border-slate-500/20 text-white rounded-lg overflow-hidden flex flex-col">
       <div className="relative flex-1">
         <img
           src={item.imageUrl || '/placeholder-food.jpg'}
