@@ -1,7 +1,7 @@
 //import { useStore } from '../../../store/store';
 import type { CustomerFavorite } from '../../../data/customerFavorites';
 
-const proteinColors: Record<string, string> = {
+const tagColors: Record<string, string> = {
   '18+': 'bg-yellow-100 text-yellow-800',
   'Tickets Required': 'bg-red-100 text-red-800',
   '21+': 'bg-blue-100 text-blue-800',
@@ -39,14 +39,14 @@ const CustomerFavoritesCard = ({ item }: { item: CustomerFavorite }) => {
           </div>
           
           <div className="flex flex-wrap gap-2">
-            {item.proteins.map((protein) => (
+            {item.tags.map((tag) => (
               <span 
-                key={protein}
+                key={tag}
                 className={`text-xs font-medium px-2.5 py-1 rounded-full ${
-                  proteinColors[protein] || 'bg-white/20 text-white'
+                  tagColors[tag] || 'bg-white/20 text-white'
                 }`}
               >
-                {protein}
+                {tag}
               </span>
             ))}
           </div>

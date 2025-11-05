@@ -159,7 +159,7 @@ const Reservations = () => {
     e.currentTarget.reset();
   };
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 p-6">
+    <div className=" min-h-screen bg-gray-900 text-gray-100 p-6 m-24 lg:m-36">
       <div className="max-w-2xl mx-auto">
         <h2 className="text-3xl font-bold mb-8 text-center text-orange-500">Make a Reservation</h2>
         

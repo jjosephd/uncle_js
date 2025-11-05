@@ -65,7 +65,7 @@ const Reviews = () => {
       <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
         {/* Header */}
         <header className="flex flex-col text-white items-center justify-center space-y-2 sm:space-y-3">
-          <h1 className="text-3xl sm:text-4xl font-bold">Reviews</h1>
+          <h1 className="text-3xl mt-12 sm:text-4xl font-bold">Reviews</h1>
           <h2 className="text-lg sm:text-xl text-center">Tell us about your visit!</h2>
         </header>
 
