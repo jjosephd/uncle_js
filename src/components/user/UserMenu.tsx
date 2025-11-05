@@ -10,7 +10,7 @@ const UserMenu = () => {
   };
   return (
     <>
-      <div className="relative flex items-center">
+      <div className="relative flex items-center bg-slate-800/80">
         <div>
           
             <div className="down-arrow flex flex-row items-center gap-1" onClick={handleDropdownMenu}>
