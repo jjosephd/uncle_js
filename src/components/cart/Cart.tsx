@@ -53,7 +53,7 @@ const Cart = () => {
               {cart.length === 0 ? (
                 <p>Your cart is empty.</p>
               ) : (
-                <div>
+                <div className="bg-slate-800/80 flex flex-col justify-between">
                   {cart.map((item) => (
                     <div
                       key={item.id}
