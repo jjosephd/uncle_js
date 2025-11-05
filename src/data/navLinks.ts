@@ -8,12 +8,13 @@ export const navLinks = [
     to: 'about-section',
   },
   {
-    name: 'Events',
-    to: 'customer-favorites-section',
-  },
-  {
     name: 'Promotions',
     to: 'promotion-section',
+  },
+
+  {
+    name: 'Events',
+    to: 'customer-favorites-section',
   },
 
   {
