@@ -45,23 +45,17 @@ const NavBar = () => {
         })}
       </ul>
 
-      <ul className="btn-container flex w-full navbar-end gap-4 items-center">
-        <li className="social-list-item">
-          <FaInstagram className="text-xl hover:cursor-pointer" />
+      <ul className="btn-container flex w-full navbar-end gap-2 items-center ">
+        <li className="social-list-item border rounded-full py-1 px-3 border-black border-b-4 border-r-2 hover:border-b-6 hover:border-r-6 hover:scale-110 transition-all duration-200 hover:cursor-pointer">
+          <FaInstagram className="text-2xl hover:cursor-pointer" />
         </li>
-        <li className="cart-list-item">
+        <li className="cart-list-item border rounded-full py-1 px-3 border-black border-b-4 border-r-2 hover:border-b-6 hover:border-r-6 hover:scale-110 transition-all duration-200 hover:cursor-pointer">
           <ActiveCart />
         </li>
-        <li className="login-list-item">
+        <li className="login-list-item border rounded-full items-center px-2 py-1 border-black border-b-4 border-r-2 hover:border-b-6 hover:border-r-6 hover:scale-110 transition-all duration-200 hover:cursor-pointer">
           <UserMenu />
         </li>
-        <li className="order-list-item">
-          <NavLink to="/">
-            <div className="order-btn border border-black border-b-6 border-r-6 rounded-full text-xs sm:text-lg py-1 px-2">
-              Order Now
-            </div>
-          </NavLink>
-        </li>
+       
       </ul>
     </nav>
   );

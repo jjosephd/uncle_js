@@ -34,6 +34,14 @@ import slawImg from '../assets/images/menuItems/slawImg.jpg';
 import spaghettiImg from '../assets/images/menuItems/spaghettiImg.jpg';
 import spFriesImg from '../assets/images/menuItems/spFriesImg.jpg';
 import spinDipImg from '../assets/images/menuItems/spinDipImg.jpg';
+import cheesecakeImg from '../assets/images/menuItems/cheesecakeImg.jpg'
+import applepieImg from '../assets/images/menuItems/applePieImg.jpg';
+import sundaeImg from '../assets/images/menuItems/sundaeImg.jpg';
+
+import coffeeImg from '../assets/images/menuItems/coffeeImg.jpg';
+import lemonadeImg from '../assets/images/menuItems/lemonadeImg.jpg';
+import sodaImg from '../assets/images/menuItems/sodaImg.jpg';
+import teaImg from '../assets/images/menuItems/teaImg.jpg';
 
 // Define the Product interface for type safety
 export interface Product {
@@ -405,7 +413,7 @@ export const products: Product[] = [
   {
     id: 36,
     name: 'New York Cheesecake',
-    imageUrl: dessertImg,
+    imageUrl: cheesecakeImg,
     description: 'Classic creamy cheesecake with graham cracker crust',
     price: 7.99,
     nutrition: {},
@@ -414,7 +422,7 @@ export const products: Product[] = [
   {
     id: 37,
     name: 'Apple Pie',
-    imageUrl: dessertImg,
+    imageUrl: applepieImg,
     description: 'Traditional apple pie with cinnamon and a flaky crust',
     price: 6.99,
     nutrition: {},
@@ -423,7 +431,7 @@ export const products: Product[] = [
   {
     id: 38,
     name: 'Ice Cream Sundae',
-    imageUrl: dessertImg,
+    imageUrl: sundaeImg,
     description:
       'Three scoops of vanilla ice cream with chocolate sauce and whipped cream',
     price: 5.99,
@@ -435,7 +443,7 @@ export const products: Product[] = [
   {
     id: 39,
     name: 'Coca Cola',
-    imageUrl: '',
+    imageUrl: sodaImg,
     description: 'Classic refreshing cola served ice cold',
     price: 2.99,
     nutrition: {},
@@ -444,7 +452,7 @@ export const products: Product[] = [
   {
     id: 40,
     name: 'Fresh Lemonade',
-    imageUrl: '',
+    imageUrl: lemonadeImg,
     description: 'House-made lemonade with fresh squeezed lemons',
     price: 3.99,
     nutrition: {},
@@ -453,7 +461,7 @@ export const products: Product[] = [
   {
     id: 41,
     name: 'Coffee',
-    imageUrl: '',
+    imageUrl: coffeeImg,
     description: 'Freshly brewed coffee, regular or decaf',
     price: 2.49,
     nutrition: {},
@@ -462,7 +470,7 @@ export const products: Product[] = [
   {
     id: 42,
     name: 'Iced Tea',
-    imageUrl: '',
+    imageUrl: teaImg,
     description: 'Refreshing iced tea, sweetened or unsweetened',
     price: 2.99,
     nutrition: {},

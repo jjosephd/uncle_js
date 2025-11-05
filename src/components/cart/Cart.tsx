@@ -88,7 +88,7 @@ const Cart = () => {
                       </div>
                     </div>
                   ))}
-                  <div className="mt-4 text-xl font-bold">
+                  <div className="mt-4 text-xl text-slate-900 font-bold">
                     Total: ${totalPrice?.toFixed(2)}
                   </div>
                   <div className="btn-container flex flex-grow gap-2">

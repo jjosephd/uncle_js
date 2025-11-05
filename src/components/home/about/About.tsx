@@ -9,17 +9,17 @@ const aboutContent = [
     src: aboutImg,
   },
   {
-    type: 'text',
-    title: "About Uncle J's",
-    content:
-      "Uncle J's started the way most great meals do—around a family table. Back in the day, “Uncle J” was the relative everyone knew would put too much food on your plate, tell you to “eat first, talk later,” and make you laugh until your stomach hurt. His kitchen was a gathering place, not just for family but for neighbors, friends, and anyone who needed a good meal and good company. When Uncle J decided to open a restaurant, he brought that same spirit with him. The recipes? Family-tested and soul-approved.",
-  },
-  {
-    type: 'text',
-    title: 'Our Vibe',
-    content:
-      "The vibe? Like walking into your favorite cousin's house on a Sunday afternoon. As a Black-owned restaurant, Uncle J's is proud to carry forward a tradition of resilience, flavor, and hospitality. Every dish has a story—passed down, remixed, and served with love. It's more than food; it's culture on a plate. Today, Uncle J's isn't just a restaurant—it's a community hub. A place where people gather to celebrate, connect, and keep the legacy of good food and family alive. Because at Uncle J's, you're never just a customer… you're family.",
-  },
+  type: 'text',
+  title: "About Uncle J's",
+  content:
+    "Uncle J's began like all great meals—around a family table. 'Uncle J' was the one who overfed you, made you laugh, and turned his kitchen into a gathering place for anyone craving good food and good company. When he opened his restaurant, he brought that same warmth and family-tested, soul-approved flavor.",
+},
+{
+  type: 'text',
+  title: 'Our Vibe',
+  content:
+    "Think Sunday at your favorite cousin’s house. As a Black-owned spot, Uncle J’s celebrates resilience, flavor, and community. Every dish tells a story—passed down, remixed, and served with love. It’s more than food; it’s culture on a plate. Here, you’re never just a customer—you’re family.",
+}
 ];
 
 const About = () => {

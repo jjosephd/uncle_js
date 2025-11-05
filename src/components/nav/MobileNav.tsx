@@ -70,7 +70,7 @@ const MobileNav = () => {
       {/* Mobile menu button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="p-3 text-white hover:text-gray-300 focus:outline-none transition-colors"
+        className="p-3 text-white hover:text-gray-300 focus:outline-none transition-colors hover:cursor-pointer"
         aria-label="Toggle menu"
       >
         {isOpen ? (
@@ -109,7 +109,7 @@ const MobileNav = () => {
                   </h2>
                   <button
                     onClick={() => setIsOpen(false)}
-                    className="p-2 -mr-2 text-gray-400 hover:text-white transition-colors"
+                    className="p-2 -mr-2 text-gray-400 hover:text-white transition-colors hover:cursor-pointer"
                     aria-label="Close menu"
                   >
                     <X className="h-6 w-6" />

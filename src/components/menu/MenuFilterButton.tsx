@@ -6,7 +6,7 @@ const MenuFilterButton = () => {
   const { toggleFilter, filterActive } = useStore();
   return (
     <div
-      className="hover:cursor-pointer hover:bg-orange-500 btn btn-sm btn-ghost border rounded border-slate-400/80 shadow-xl text-white"
+      className="hover:cursor-pointer mt-16 hover:bg-orange-500 btn btn-sm btn-ghost border rounded border-slate-400/80 shadow-xl text-white"
       onClick={toggleFilter}
     >
       <button className="">

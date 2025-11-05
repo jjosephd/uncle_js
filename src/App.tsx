@@ -37,7 +37,7 @@ const HomeLayout = () => {
         />
       </div>
       
-      <div className="overflow-hidden flex-grow flex justify-center pt-24">
+      <div className="overflow-hidden flex-grow flex justify-center pt-10">
         
         {/* Header Component */}
         <main className="overflow-y-auto flex flex-col justify-center items-center w-full">

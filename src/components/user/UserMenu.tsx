@@ -13,7 +13,7 @@ const UserMenu = () => {
       <div className="relative flex items-center">
         <div>
           
-            <div className="down-arrow flex flex-row items-center border rounded-lg px-2 py-1 gap-1" onClick={handleDropdownMenu}>
+            <div className="down-arrow flex flex-row items-center gap-1" onClick={handleDropdownMenu}>
               <UserIcon className="text-2xl hover:cursor-pointer" />
               <FaAngleDown className="text-xs hover:cursor-pointer" />
             </div>
