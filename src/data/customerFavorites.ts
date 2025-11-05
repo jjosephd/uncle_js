@@ -5,7 +5,7 @@ import partyImg from '../assets/images/customer-favorites/partyImg.jpg';
 import type { Product } from './productData';
 
 export interface CustomerFavorite extends Omit<Product, 'category' | 'nutrition'> {
-  proteins: string[];
+  tags: string[];
 }
 
 export const customerFavorites: CustomerFavorite[] = [
@@ -15,7 +15,7 @@ export const customerFavorites: CustomerFavorite[] = [
     imageUrl: margaritaImg,
     description: 'Bring a friend with you on Mondays and enjoy a $2.50 margarita!',
     price: 2.50,
-    proteins: ['21+']
+    tags: ['21+']
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ export const customerFavorites: CustomerFavorite[] = [
     imageUrl: nightlifeImg,
     description: 'Saturdays just for you! Join us for live music and half off drinks from 6pm to 10pm!',
     price: 14.99,
-    proteins: ['Tickets Required']
+    tags: ['Tickets Required']
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ export const customerFavorites: CustomerFavorite[] = [
     imageUrl: partyImg,
     description: 'Make your after hours experience unforgettable with our casino-style games and live music!',
     price: 12.99,
-    proteins: ['18+', 'Tickets Required']
+    tags: ['18+', 'Tickets Required']
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ export const customerFavorites: CustomerFavorite[] = [
     imageUrl: foodTruckImg,
     description: 'Catch us at the uptown nightlife area on Fridays when we take our show on the road.',
     price: 0,
-    proteins: ['Free']
+    tags: ['Free']
   },
  
 ];
