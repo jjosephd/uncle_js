@@ -35,7 +35,7 @@ import spaghettiImg from '../assets/images/menuItems/spaghettiImg.jpg';
 import spFriesImg from '../assets/images/menuItems/spFriesImg.jpg';
 import spinDipImg from '../assets/images/menuItems/spinDipImg.jpg';
 import cheesecakeImg from '../assets/images/menuItems/cheesecakeImg.jpg'
-import applepieImg from '../assets/images/menuItems/applePieImg.jpg';
+import applepieImg from '../assets/images/menuItems/applepieImg.jpg';
 import sundaeImg from '../assets/images/menuItems/sundaeImg.jpg';
 
 import coffeeImg from '../assets/images/menuItems/coffeeImg.jpg';
