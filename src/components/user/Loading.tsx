@@ -54,7 +54,7 @@ const LoadingSpinner: React.FC<{ className?: string }> = ({
 const Loading: React.FC = () => {
   return (
     <>
-      <LoadingSpinner />
+      <LoadingSpinner data-testid="loading-spinner" />
     </>
   );
 };
