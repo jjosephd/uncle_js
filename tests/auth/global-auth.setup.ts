@@ -10,7 +10,7 @@ setup('authentication', async ({ page }) => {
   await page.goto(Data.LOGIN_PAGE_LINK);
   await Actions.handleLogin(page, LOGIN_USER, LOGIN_PASSWORD);
 
-  await page.waitForURL('https://uncle-js.vercel.app/');
+  await page.waitForURL(Data.HOME_PAGE_URL);
 
   await page.context().storageState({ path: authFile });
 });

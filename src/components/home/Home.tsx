@@ -13,14 +13,22 @@ const Home = () => {
       <section id="hero-section" className="hero-section">
         <Hero />
       </section>
-      <section id="about-section" className="about-section">
+      <section
+        id="about-section"
+        className="about-section"
+        data-testid="about-section"
+      >
         <About />
-        <RestaurantMap/>
+        <RestaurantMap />
       </section>
       <section id="favorites-section" className="favorites-section">
         <Favorites />
       </section>
-      <section id="promotion-section" className="promotion-section">
+      <section
+        id="promotion-section"
+        className="promotion-section"
+        aria-label="Promotions"
+      >
         <Promotion />
       </section>
       <section
