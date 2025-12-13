@@ -61,24 +61,6 @@ test.describe('check that routes for navlinks are correct', () => {
 test.describe('navbar cart button', () => {
   test('should be visible and have correct hover effects', async ({ page }) => {
     const landingPage = new LandingPage(page);
-    const hoverEffects = {
-      scale110: {
-        cssProperty: 'scale',
-        value: '1.1',
-      },
-      borderBottom: {
-        borderProperty: 'border-bottom-width',
-        value: '6px',
-      },
-      borderRight: {
-        borderProperty: 'border-right-width',
-        value: '6px',
-      },
-      cursor: {
-        cursorProperty: 'cursor',
-        value: 'pointer',
-      },
-    };
 
     // 1. Check initial visibility (static state)
     await expect(landingPage.cartBtn).toBeVisible();
@@ -87,16 +69,16 @@ test.describe('navbar cart button', () => {
     // 2. Check interaction (hover state)
     await landingPage.hoverCartButton();
     await expect(landingPage.cartBtn).toHaveCSS(
-      hoverEffects.borderBottom.borderProperty,
-      hoverEffects.borderBottom.value
+      Data.HOVER_EFFECTS.borderBottom.borderProperty,
+      Data.HOVER_EFFECTS.borderBottom.value
     );
     await expect(landingPage.cartBtn).toHaveCSS(
-      hoverEffects.borderRight.borderProperty,
-      hoverEffects.borderRight.value
+      Data.HOVER_EFFECTS.borderRight.borderProperty,
+      Data.HOVER_EFFECTS.borderRight.value
     );
     await expect(landingPage.cartBtn).toHaveCSS(
-      hoverEffects.scale110.cssProperty,
-      hoverEffects.scale110.value
+      Data.HOVER_EFFECTS.scale110.cssProperty,
+      Data.HOVER_EFFECTS.scale110.value
     );
   });
 });
