@@ -58,6 +58,9 @@ test.describe('check that routes for navlinks are correct', () => {
     await page.waitForURL(Data.MENU_PAGE_URL);
   });
 });
+
+// test cart button
+
 test.describe('navbar cart button', () => {
   test('should be visible and have correct hover effects', async ({ page }) => {
     const landingPage = new LandingPage(page);
@@ -81,4 +84,6 @@ test.describe('navbar cart button', () => {
       Data.HOVER_EFFECTS.scale110.value
     );
   });
+
+  /* Write tests for button click handling */
 });
