@@ -6,7 +6,11 @@ const ActiveCart = () => {
   const toggleCart = useStore((state) => state.toggleCart);
 
   return (
-    <div className="relative flex items-center" onClick={toggleCart}>
+    <div
+      className="relative flex items-center"
+      onClick={toggleCart}
+      aria-label="Open cart"
+    >
       <div>
         <LuShoppingBasket className="text-2xl hover:cursor-pointer" />
       </div>

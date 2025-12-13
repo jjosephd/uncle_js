@@ -83,6 +83,10 @@ test.describe('navbar cart button', () => {
       Data.HOVER_EFFECTS.scale110.cssProperty,
       Data.HOVER_EFFECTS.scale110.value
     );
+
+    // 3. Check click interaction
+    await landingPage.cartBtn.click();
+    await expect(landingPage.openCart).toBeVisible();
   });
 
   /* Write tests for button click handling */

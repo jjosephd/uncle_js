@@ -13,6 +13,7 @@ export class LandingPage {
   public readonly instagramBtn: Locator;
   public readonly cartBtn: Locator;
   public readonly cartCount: Locator;
+  public readonly openCart: Locator;
   public readonly userMenuBtn: Locator;
 
   constructor(public readonly page: Page) {
@@ -30,6 +31,7 @@ export class LandingPage {
     this.instagramBtn = page.getByTestId('instagram');
     this.cartBtn = page.getByTestId('cart-btn');
     this.cartCount = page.getByLabel('cart-count');
+    this.openCart = page.getByLabel('open cart');
     this.userMenuBtn = page.getByTestId('user-menu-btn');
   }
 
