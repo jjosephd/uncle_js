@@ -34,6 +34,7 @@ const Home = () => {
       <section
         id="customer-favorites-section"
         className="customer-favorites-section"
+        aria-label="events"
       >
         <CustomerFavorites />
       </section>

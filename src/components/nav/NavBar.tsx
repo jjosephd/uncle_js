@@ -67,7 +67,8 @@ const NavBar = () => {
           <ActiveCart />
         </li>
         <li
-          data-testid="user-menu-btn"
+          data-testid="user-menu"
+          aria-label="user-menu"
           className="login-list-item border rounded-full items-center px-2 py-1 border-black border-b-4 border-r-2 hover:border-b-6 hover:border-r-6 hover:scale-110 transition-all duration-200 hover:cursor-pointer"
         >
           <UserMenu />
