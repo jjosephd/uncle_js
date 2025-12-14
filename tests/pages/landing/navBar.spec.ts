@@ -91,3 +91,30 @@ test.describe('navbar cart button', () => {
 
   /* Write tests for button click handling */
 });
+test.describe('user menu button', () => {
+  test('should be visibile and display menu options list', async ({ page }) => {
+    const landingPage = new LandingPage(page);
+
+    // 1. Check intial visibility
+    await expect(landingPage.cartBtn).toBeVisible();
+
+    // 2. Check hover state
+    await landingPage.hoverUserMenuBtn();
+    await expect(landingPage.userMenuBtn).toHaveCSS(
+      Data.HOVER_EFFECTS.borderBottom.borderProperty,
+      Data.HOVER_EFFECTS.borderBottom.value
+    );
+    await expect(landingPage.userMenuBtn).toHaveCSS(
+      Data.HOVER_EFFECTS.borderRight.borderProperty,
+      Data.HOVER_EFFECTS.borderRight.value
+    );
+    await expect(landingPage.userMenuBtn).toHaveCSS(
+      Data.HOVER_EFFECTS.scale110.cssProperty,
+      Data.HOVER_EFFECTS.scale110.value
+    );
+
+    // 3. Check click interaction
+    await landingPage.clickUserMenuBtn();
+    await expect(landingPage.dropDownMenu).toBeVisible();
+  });
+});

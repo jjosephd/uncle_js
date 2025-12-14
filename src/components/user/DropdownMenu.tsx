@@ -1,8 +1,14 @@
-import { NavLink } from "react-router-dom"
-import { motion, AnimatePresence } from "framer-motion"
-import { FaSignInAlt, FaStar, FaCalendarAlt } from "react-icons/fa"
+import { NavLink } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaSignInAlt, FaStar, FaCalendarAlt } from 'react-icons/fa';
 
-const DropdownMenu = ({menuOpen, setShowMenu}: {menuOpen: boolean, setShowMenu: (showMenu: boolean) => void}) => {
+const DropdownMenu = ({
+  menuOpen,
+  setShowMenu,
+}: {
+  menuOpen: boolean;
+  setShowMenu: (showMenu: boolean) => void;
+}) => {
   return (
     <AnimatePresence>
       {menuOpen && (
@@ -11,14 +17,15 @@ const DropdownMenu = ({menuOpen, setShowMenu}: {menuOpen: boolean, setShowMenu: 
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -20, scale: 0.95 }}
           transition={{
-            type: "spring",
+            type: 'spring',
             damping: 25,
             stiffness: 300,
-            bounce: 0.2
+            bounce: 0.2,
           }}
           className="absolute top-5 right-0 w-48 bg-slate-800/90 backdrop-blur-sm rounded-md shadow-lg overflow-hidden z-50"
+          aria-label="Drop Down Menu"
         >
-          <motion.div 
+          <motion.div
             className="py-1"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -60,7 +67,7 @@ const DropdownMenu = ({menuOpen, setShowMenu}: {menuOpen: boolean, setShowMenu: 
         </motion.div>
       )}
     </AnimatePresence>
-  )
-}
+  );
+};
 
-export default DropdownMenu  
+export default DropdownMenu;

@@ -15,6 +15,7 @@ export class LandingPage {
   public readonly cartCount: Locator;
   public readonly openCart: Locator;
   public readonly userMenuBtn: Locator;
+  public readonly dropDownMenu: Locator;
 
   constructor(public readonly page: Page) {
     this.navBar = page.getByTestId('navbar');
@@ -32,7 +33,8 @@ export class LandingPage {
     this.cartBtn = page.getByTestId('cart-btn');
     this.cartCount = page.getByLabel('cart-count');
     this.openCart = page.getByLabel('open cart');
-    this.userMenuBtn = page.getByTestId('user-menu-btn');
+    this.userMenuBtn = page.getByTestId('user-menu');
+    this.dropDownMenu = page.getByLabel('drop down menu');
   }
 
   clickHome = async () => {
@@ -47,6 +49,7 @@ export class LandingPage {
   hoverEventsLink = async () => await this.eventsLink.hover();
   hoverMenuPageLink = async () => await this.menuPageLink.hover();
   hoverCartButton = async () => await this.cartBtn.hover();
+  hoverUserMenuBtn = async () => await this.userMenuBtn.hover();
 
   clickEvents = async () => {
     await this.eventsLink.click();

@@ -37,6 +37,7 @@ const Cart = () => {
             initial="hidden"
             animate="visible"
             exit="hidden"
+            aria-label="open cart"
           >
             <div className="header-container w-full bg-green-900 pt-2 flex justify-center items-center">
               <h2 className="text-2xl font-bold mb-4 text-center text-white">
