@@ -5,22 +5,26 @@ const containerStyle = {
   width: '100%',
   height: '400px',
   borderRadius: '0.5rem',
-  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
 };
 
 // Coordinates for the restaurant (VSU Coordinates)
 const center = {
-  lat: 37.24,  // E
-  lng: -77.42
+  lat: 37.24, // E
+  lng: -77.42,
 };
 
 // Keep libraries array as a constant outside the component
-const libraries: ('marker')[] = ['marker'];
+const libraries: 'marker'[] = ['marker'];
 
 // Custom Marker component using AdvancedMarkerElement
-const AdvancedMarker: React.FC<{ map: google.maps.Map 
-  | null; position: google.maps.LatLngLiteral }> = ({ map, position }) => {
-  const markerRef = useRef<google.maps.marker.AdvancedMarkerElement | null>(null);
+const AdvancedMarker: React.FC<{
+  map: google.maps.Map | null;
+  position: google.maps.LatLngLiteral;
+}> = ({ map, position }) => {
+  const markerRef = useRef<google.maps.marker.AdvancedMarkerElement | null>(
+    null
+  );
 
   useEffect(() => {
     if (!map) return;
@@ -29,7 +33,7 @@ const AdvancedMarker: React.FC<{ map: google.maps.Map
     markerRef.current = new google.maps.marker.AdvancedMarkerElement({
       position,
       map,
-      title: 'Restaurant Location'
+      title: 'Restaurant Location',
     });
 
     // Cleanup function
@@ -51,27 +55,33 @@ const MapContent: React.FC = () => {
   };
 
   return (
-    <GoogleMap
-      mapContainerStyle={containerStyle}
-      center={center}
-      zoom={15}
-      onLoad={onLoad}
-    >
-      {mapRef.current && <AdvancedMarker map={mapRef.current} position={center} />}
-    </GoogleMap>
+    <div role="region" aria-label="Restaurant Location Map">
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={15}
+        onLoad={onLoad}
+      >
+        {mapRef.current && (
+          <AdvancedMarker map={mapRef.current} position={center} />
+        )}
+      </GoogleMap>
+    </div>
   );
 };
 
 const RestaurantMap: React.FC = () => {
-  const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+  const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY_DEV;
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: apiKey,
-    libraries
+    libraries,
   });
 
   if (!apiKey) {
     console.error('Google Maps API key is not set!');
-    return <div className="text-white">Map cannot be loaded - API key missing</div>;
+    return (
+      <div className="text-white">Map cannot be loaded - API key missing</div>
+    );
   }
 
   if (loadError) {

@@ -116,5 +116,25 @@ test.describe('user menu button', () => {
     // 3. Check click interaction
     await landingPage.clickUserMenuBtn();
     await expect(landingPage.dropDownMenu).toBeVisible();
+
+    // 4. Check close open menu
+    await landingPage.clickUserMenuBtn();
+    await expect(landingPage.dropDownMenu).toBeHidden();
+  });
+  test.describe('google map integration', () => {
+    test('check that map loads and is visible', async ({ page }) => {
+      const landingPage = new LandingPage(page);
+
+      // 1. Check intial visibility
+      await expect(landingPage.locationMap).toBeVisible();
+
+      // 2. Check initial view option state
+      await expect(landingPage.mapViewSatelliteOption).toBeVisible({
+        timeout: 15000,
+      });
+      await expect(landingPage.mapViewStreetMapOption).toBeVisible({
+        timeout: 15000,
+      });
+    });
   });
 });

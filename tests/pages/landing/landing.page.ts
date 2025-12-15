@@ -16,25 +16,41 @@ export class LandingPage {
   public readonly openCart: Locator;
   public readonly userMenuBtn: Locator;
   public readonly dropDownMenu: Locator;
+  public readonly locationMap: Locator;
+  public readonly mapViewSatelliteOption: Locator;
+  public readonly mapViewStreetMapOption: Locator;
+  public readonly mapMenuBar: Locator;
+  public readonly mapFullScrnBtn: Locator;
+  public readonly mapCameraControls: Locator;
 
   constructor(public readonly page: Page) {
     this.navBar = page.getByTestId('navbar');
-    this.homeLink = page.getByText('home').first();
-    this.aboutLink = page.getByText('about').first();
-    this.aboutSection = page.getByTestId('about-section').first();
-    this.promotionsLink = page.getByText('promotions').first();
-    this.promotionsSection = page
-      .getByRole('region', { name: 'Promotions' })
-      .first();
-    this.eventsLink = page.getByText('events').first();
-    this.eventsSection = page.getByRole('region', { name: 'Events' }).first();
-    this.menuPageLink = page.getByText('menu').first();
+    this.homeLink = page.getByText('home');
+    this.aboutLink = page.getByText('about');
+    this.aboutSection = page.getByTestId('about-section');
+    this.promotionsLink = page.getByText('promotions');
+    this.promotionsSection = page.getByRole('region', { name: 'Promotions' });
+    this.eventsLink = page.getByText('events');
+    this.eventsSection = page.getByRole('region', { name: 'Events' });
+    this.menuPageLink = page.getByText('menu');
     this.instagramBtn = page.getByTestId('instagram');
     this.cartBtn = page.getByTestId('cart-btn');
     this.cartCount = page.getByLabel('cart-count');
     this.openCart = page.getByLabel('open cart');
     this.userMenuBtn = page.getByTestId('user-menu');
     this.dropDownMenu = page.getByLabel('drop down menu');
+    this.locationMap = page.getByLabel('Restaurant Location Map');
+    this.mapViewSatelliteOption = page.getByLabel('Show satellite imagery');
+    this.mapViewStreetMapOption = page.getByRole('menuitemradio', {
+      name: 'Show street map',
+    });
+    this.mapMenuBar = page.getByRole('menubar');
+    this.mapFullScrnBtn = page.getByRole('button', {
+      name: 'Toggle fullscreen view',
+    });
+    this.mapCameraControls = page.getByRole('button', {
+      name: 'Map camera controls',
+    });
   }
 
   clickHome = async () => {
