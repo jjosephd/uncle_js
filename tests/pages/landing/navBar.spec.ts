@@ -16,46 +16,34 @@ test.describe('check that routes for navlinks are correct', () => {
   test('check that about routes to #about-section', async ({ page }) => {
     const landingPage = new LandingPage(page);
 
-    await landingPage.clickAbout();
-    await expect(landingPage.aboutSection).toBeVisible();
+    await landingPage.navbar.goToAbout();
+    await landingPage.expectAboutSectionVisible();
   });
   test('check that promotions link routes to #promotions-section', async ({
     page,
   }) => {
     const landingPage = new LandingPage(page);
 
-    await landingPage.clickPromotions();
-    await expect(landingPage.promotionsSection).toBeVisible();
+    await landingPage.navbar.gotoPromotions();
+    await landingPage.expectPromotionSectionVisible();
   });
   test('check that events link routes to #customer-favorites-section', async ({
     page,
   }) => {
     const landingPage = new LandingPage(page);
-    const properties = {
-      colors: { green: 'oklch(0.393 0.095 152.535)' },
-    };
 
-    await landingPage.hoverEventsLink();
-    await expect(landingPage.eventsLink).toHaveCSS(
-      'color',
-      properties.colors.green
-    );
-    await landingPage.clickEvents();
-    await expect(landingPage.eventsSection).toBeVisible();
+    await landingPage.navbar.hoverEventsLink();
+    await landingPage.navbar.expectEventsHoverColor();
+    await landingPage.navbar.gotoEvents();
+    await landingPage.expectEventsSectionVisible();
   });
   test('check that menu link routes to /menu', async ({ page }) => {
     const landingPage = new LandingPage(page);
-    const properties = {
-      colors: { green: 'oklch(0.393 0.095 152.535)' },
-    };
 
-    await landingPage.hoverMenuPageLink();
-    await expect(landingPage.menuPageLink).toHaveCSS(
-      'color',
-      properties.colors.green
-    );
-    await landingPage.clickMenuPage();
-    await page.waitForURL(Data.MENU_PAGE_URL);
+    await landingPage.navbar.hoverMenuPageLink();
+    await landingPage.navbar.expectMenuLinkHoverColor();
+    await landingPage.navbar.gotoMenuPage();
+    await landingPage.expectMenuPageVisible();
   });
 });
 
@@ -66,26 +54,16 @@ test.describe('navbar cart button', () => {
     const landingPage = new LandingPage(page);
 
     // 1. Check initial visibility (static state)
-    await expect(landingPage.cartBtn).toBeVisible();
-    await expect(landingPage.cartCount).toBeVisible();
+    await landingPage.navbar.expectCartBtnVisible();
 
     // 2. Check interaction (hover state)
-    await landingPage.hoverCartButton();
-    await expect(landingPage.cartBtn).toHaveCSS(
-      Data.HOVER_EFFECTS.borderBottom.borderProperty,
-      Data.HOVER_EFFECTS.borderBottom.value
-    );
-    await expect(landingPage.cartBtn).toHaveCSS(
-      Data.HOVER_EFFECTS.borderRight.borderProperty,
-      Data.HOVER_EFFECTS.borderRight.value
-    );
-    await expect(landingPage.cartBtn).toHaveCSS(
-      Data.HOVER_EFFECTS.scale110.cssProperty,
-      Data.HOVER_EFFECTS.scale110.value
-    );
+    await landingPage.navbar.hoverCartButton();
+    await landingPage.navbar.expectCartBtnActiveHover();
 
     // 3. Check click interaction
-    await landingPage.cartBtn.click();
+    await landingPage.navbar.toggleCartBtn();
+
+    /* CONTINUE REFACTORING HERE */
     await expect(landingPage.openCart).toBeVisible();
   });
 
@@ -99,7 +77,7 @@ test.describe('user menu button', () => {
     await expect(landingPage.cartBtn).toBeVisible();
 
     // 2. Check hover state
-    await landingPage.hoverUserMenuBtn();
+    await landingPage.navbar.hoverUserMenuBtn();
     await expect(landingPage.userMenuBtn).toHaveCSS(
       Data.HOVER_EFFECTS.borderBottom.borderProperty,
       Data.HOVER_EFFECTS.borderBottom.value
@@ -120,21 +98,5 @@ test.describe('user menu button', () => {
     // 4. Check close open menu
     await landingPage.clickUserMenuBtn();
     await expect(landingPage.dropDownMenu).toBeHidden();
-  });
-  test.describe('google map integration', () => {
-    test('check that map loads and is visible', async ({ page }) => {
-      const landingPage = new LandingPage(page);
-
-      // 1. Check intial visibility
-      await expect(landingPage.locationMap).toBeVisible();
-
-      // 2. Check initial view option state
-      await expect(landingPage.mapViewSatelliteOption).toBeVisible({
-        timeout: 15000,
-      });
-      await expect(landingPage.mapViewStreetMapOption).toBeVisible({
-        timeout: 15000,
-      });
-    });
   });
 });

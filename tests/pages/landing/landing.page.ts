@@ -1,13 +1,15 @@
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator, expect } from '@playwright/test';
+import { Navbar } from '../../components/layout/Navbar';
+import * as Data from '../landing/landing.data';
 
 export class LandingPage {
+  readonly navbar: Navbar;
+
   public readonly navBar: Locator;
   public readonly homeLink: Locator;
-  public readonly aboutLink: Locator;
-  public readonly aboutSection: Locator;
+  private readonly aboutSection: Locator;
   public readonly promotionsLink: Locator;
   public readonly promotionsSection: Locator;
-  public readonly eventsLink: Locator;
   public readonly eventsSection: Locator;
   public readonly menuPageLink: Locator;
   public readonly instagramBtn: Locator;
@@ -34,15 +36,14 @@ export class LandingPage {
     moveLeft: 'Move left',
   };
   constructor(public readonly page: Page) {
+    this.navbar = new Navbar(page);
     this.navBar = page.getByTestId('navbar');
     this.homeLink = page.getByText('home').first();
-    this.aboutLink = page.getByText('about').first();
     this.aboutSection = page.getByTestId('about-section').first();
     this.promotionsLink = page.getByText('promotions').first();
     this.promotionsSection = page
       .getByRole('region', { name: 'Promotions' })
       .first();
-    this.eventsLink = page.getByText('events').first();
     this.eventsSection = page.getByRole('region', { name: 'Events' }).first();
     this.menuPageLink = page.getByText('menu').first();
     this.instagramBtn = page.getByTestId('instagram');
@@ -83,23 +84,17 @@ export class LandingPage {
   clickHome = async () => {
     await this.homeLink.click();
   };
-  clickAbout = async () => {
-    await this.aboutLink.click();
-  };
-  clickPromotions = async () => {
-    await this.promotionsLink.click();
-  };
-  hoverEventsLink = async () => await this.eventsLink.hover();
-  hoverMenuPageLink = async () => await this.menuPageLink.hover();
-  hoverCartButton = async () => await this.cartBtn.hover();
-  hoverUserMenuBtn = async () => await this.userMenuBtn.hover();
+  async expectAboutSectionVisible() {
+    await expect(this.aboutSection).toBeVisible();
+  }
+  async expectPromotionSectionVisible() {
+    await expect(this.promotionsSection).toBeVisible();
+  }
+  expectEventsSectionVisible = async () =>
+    await expect(this.eventsSection).toBeVisible();
+  expectMenuPageVisible = async () =>
+    await this.page.waitForURL(Data.MENU_PAGE_URL);
 
-  clickEvents = async () => {
-    await this.eventsLink.click();
-  };
-  clickMenuPage = async () => {
-    await this.menuPageLink.click();
-  };
   clickInstagramBtn = async () => await this.instagramBtn.click();
   clickCartBtn = async () => await this.cartBtn.click();
   clickUserMenuBtn = async () => await this.userMenuBtn.click();
