@@ -22,17 +22,29 @@ export class LandingPage {
   public readonly mapMenuBar: Locator;
   public readonly mapFullScrnBtn: Locator;
   public readonly mapCameraControls: Locator;
+  public readonly mapCameraControlsBtnUp: Locator;
+  public readonly mapCameraControlsBtnRight: Locator;
+  public readonly mapCameraControlsBtnDown: Locator;
+  public readonly mapCameraControlsBtnLeft: Locator;
 
+  mapStreetOptions = {
+    moveUp: 'Move up',
+    moveRight: 'Move right',
+    moveDown: 'Move down',
+    moveLeft: 'Move left',
+  };
   constructor(public readonly page: Page) {
     this.navBar = page.getByTestId('navbar');
-    this.homeLink = page.getByText('home');
-    this.aboutLink = page.getByText('about');
-    this.aboutSection = page.getByTestId('about-section');
-    this.promotionsLink = page.getByText('promotions');
-    this.promotionsSection = page.getByRole('region', { name: 'Promotions' });
-    this.eventsLink = page.getByText('events');
-    this.eventsSection = page.getByRole('region', { name: 'Events' });
-    this.menuPageLink = page.getByText('menu');
+    this.homeLink = page.getByText('home').first();
+    this.aboutLink = page.getByText('about').first();
+    this.aboutSection = page.getByTestId('about-section').first();
+    this.promotionsLink = page.getByText('promotions').first();
+    this.promotionsSection = page
+      .getByRole('region', { name: 'Promotions' })
+      .first();
+    this.eventsLink = page.getByText('events').first();
+    this.eventsSection = page.getByRole('region', { name: 'Events' }).first();
+    this.menuPageLink = page.getByText('menu').first();
     this.instagramBtn = page.getByTestId('instagram');
     this.cartBtn = page.getByTestId('cart-btn');
     this.cartCount = page.getByLabel('cart-count');
@@ -50,6 +62,21 @@ export class LandingPage {
     });
     this.mapCameraControls = page.getByRole('button', {
       name: 'Map camera controls',
+    });
+    this.mapCameraControls = page.getByRole('button', {
+      name: 'Map camera controls',
+    });
+    this.mapCameraControlsBtnUp = page.getByRole('button', {
+      name: this.mapStreetOptions.moveUp,
+    });
+    this.mapCameraControlsBtnRight = page.getByRole('button', {
+      name: this.mapStreetOptions.moveRight,
+    });
+    this.mapCameraControlsBtnLeft = page.getByRole('button', {
+      name: this.mapStreetOptions.moveLeft,
+    });
+    this.mapCameraControlsBtnDown = page.getByRole('button', {
+      name: this.mapStreetOptions.moveDown,
     });
   }
 
@@ -76,4 +103,21 @@ export class LandingPage {
   clickInstagramBtn = async () => await this.instagramBtn.click();
   clickCartBtn = async () => await this.cartBtn.click();
   clickUserMenuBtn = async () => await this.userMenuBtn.click();
+
+  // map controls
+  clickMapCameraControl = async (
+    direction: 'up' | 'right' | 'down' | 'left'
+  ) => {
+    const controlsMap = {
+      up: this.mapCameraControlsBtnUp,
+      right: this.mapCameraControlsBtnRight,
+      down: this.mapCameraControlsBtnDown,
+      left: this.mapCameraControlsBtnLeft,
+    };
+
+    const control = controlsMap[direction];
+    if (control) {
+      await control.click();
+    }
+  };
 }

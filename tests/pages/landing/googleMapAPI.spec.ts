@@ -23,6 +23,10 @@ test.describe('google map API interaction', () => {
     await expect(landingPage.mapViewStreetMapOption).toBeVisible({
       timeout: 15000,
     });
+    await expect(landingPage.mapViewStreetMapOption).toBeVisible({
+      timeout: 15000,
+    });
+
     expect(landingPage.mapViewStreetMapOption).toBeTruthy();
 
     // check switching between map views
@@ -33,5 +37,10 @@ test.describe('google map API interaction', () => {
 
     // check full screen button
     await expect(landingPage.mapFullScrnBtn).toBeVisible(); // visibility
+
+    await expect(landingPage.mapCameraControls).toBeVisible();
+    await landingPage.mapCameraControls.click();
+
+    await landingPage.clickMapCameraControl('up');
   });
 });
