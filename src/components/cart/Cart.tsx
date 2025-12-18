@@ -24,20 +24,22 @@ const Cart = () => {
     <AnimatePresence>
       {isCartOpen && (
         <>
-          <motion.div
-            className="fixed top-0 left-0 w-full h-full bg-black/10 z-40"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={toggleCart}
-          />
+          <div className="screen-overlay" aria-label="screen overlay">
+            <motion.div
+              aria-label="screen overlay"
+              className="fixed top-0 left-0 w-full h-full bg-black/10 z-40"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={toggleCart}
+            />
+          </div>
           <motion.div
             className="fixed top-0 right-0 w-full max-w-md h-full bg-white shadow-lg z-50"
             variants={cartVariants}
             initial="hidden"
             animate="visible"
             exit="hidden"
-            aria-label="open cart"
           >
             <div className="header-container w-full bg-green-900 pt-2 flex justify-center items-center">
               <h2 className="text-2xl font-bold mb-4 text-center text-white">
@@ -89,19 +91,24 @@ const Cart = () => {
                       </div>
                     </div>
                   ))}
-                  <div className="mt-4 text-xl text-slate-900 font-bold">
+                  <div
+                    data-testid="total amount"
+                    className="mt-4 text-xl text-slate-900 font-bold"
+                  >
                     Total: ${totalPrice?.toFixed(2)}
                   </div>
                   <div className="btn-container flex flex-grow gap-2">
                     <button
                       onClick={clearCart}
                       className="btn btn-warning mt-4"
+                      data-testid="checkout button"
                     >
                       Checkout
                     </button>
                     <button
                       onClick={clearCart}
                       className="btn btn-warning mt-4"
+                      data-testid="clear button"
                     >
                       Clear Cart
                     </button>

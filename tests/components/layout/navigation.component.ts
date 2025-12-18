@@ -71,14 +71,62 @@ export class Navbar {
   toggleCartBtn = async () => await this.cartBtn.click();
   toggleUserMenuBtn = async () => await this.userMenuBtn.click();
 
+  /**
+   * Hovers over the cart button.
+   */
   hoverCartButton = async () => await this.cartBtn.hover();
-  expectCartBtnVisible = async () => {
-    await expect(this.cartBtn).toBeVisible();
-    await expect(this.cartCount).toBeVisible();
+
+  /**
+   * Asserts that the cart button has either 'hover' or 'active' class.
+   */
+  expectCartBtnHoverActive = async () => {
+    await expect(this.cartBtn).toHaveClass(/hover|active/);
   };
 
+  /**
+   * Asserts that the cart button and cart count are visible.
+   */
+  expectCartBtnVisible = async (value?: string) => {
+    await expect(this.cartBtn).toBeVisible();
+    await expect(this.cartCount).toBeVisible();
+    if (value) {
+      await expect(this.cartCount).toHaveText(value);
+    }
+  };
+
+  /**
+   * Asserts that the cart button has either 'hover' or 'active' class.
+   */
   expectCartBtnActiveHover = async () => {
     await expect(this.cartBtn).toHaveClass(/hover|active/);
   };
+
+  /**
+   * Hovers over the user menu button.
+   */
   hoverUserMenuBtn = async () => await this.userMenuBtn.hover();
+
+  /**
+   * Asserts user menu button is visible
+   */
+  expectUserMenuBtnVisible = async () => {
+    await expect(this.userMenuBtn).toBeVisible();
+  };
+
+  /**
+   * Asserts that user menu button has hover or active class
+   */
+  expectUserMenuBtnActiveHover = async () => {
+    await expect(this.userMenuBtn).toHaveClass(/hover|active/);
+  };
+
+  clickInstagramBtn = async () => await this.instagramBtn.click();
+  clickCartBtn = async () => await this.cartBtn.click();
+  clickUserMenuBtn = async () => await this.userMenuBtn.click();
+
+  expectDropdownMenuVisible = async () =>
+    await expect(this.dropDownMenu).toBeVisible();
+
+  expectDropdownMenuHidden = async (timeout?: number) =>
+    await expect(this.dropDownMenu).toBeHidden({ timeout });
 }

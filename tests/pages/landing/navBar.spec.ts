@@ -1,4 +1,4 @@
-import test, { expect } from '@playwright/test';
+import test from '@playwright/test';
 import { LandingPage } from './landing.page';
 import * as Data from './landing.data';
 
@@ -13,12 +13,14 @@ test.describe('check that routes for navlinks are correct', () => {
     await landingPage.clickHome();
     await page.waitForURL(Data.HOME_PAGE_URL);
   });
+
   test('check that about routes to #about-section', async ({ page }) => {
     const landingPage = new LandingPage(page);
 
     await landingPage.navbar.goToAbout();
     await landingPage.expectAboutSectionVisible();
   });
+
   test('check that promotions link routes to #promotions-section', async ({
     page,
   }) => {
@@ -27,6 +29,7 @@ test.describe('check that routes for navlinks are correct', () => {
     await landingPage.navbar.gotoPromotions();
     await landingPage.expectPromotionSectionVisible();
   });
+
   test('check that events link routes to #customer-favorites-section', async ({
     page,
   }) => {
@@ -37,6 +40,7 @@ test.describe('check that routes for navlinks are correct', () => {
     await landingPage.navbar.gotoEvents();
     await landingPage.expectEventsSectionVisible();
   });
+
   test('check that menu link routes to /menu', async ({ page }) => {
     const landingPage = new LandingPage(page);
 
@@ -62,9 +66,7 @@ test.describe('navbar cart button', () => {
 
     // 3. Check click interaction
     await landingPage.navbar.toggleCartBtn();
-
-    /* CONTINUE REFACTORING HERE */
-    await expect(landingPage.openCart).toBeVisible();
+    await landingPage.expectOpenCartVisible();
   });
 
   /* Write tests for button click handling */
@@ -74,29 +76,18 @@ test.describe('user menu button', () => {
     const landingPage = new LandingPage(page);
 
     // 1. Check intial visibility
-    await expect(landingPage.cartBtn).toBeVisible();
+    await landingPage.navbar.expectUserMenuBtnVisible();
 
     // 2. Check hover state
     await landingPage.navbar.hoverUserMenuBtn();
-    await expect(landingPage.userMenuBtn).toHaveCSS(
-      Data.HOVER_EFFECTS.borderBottom.borderProperty,
-      Data.HOVER_EFFECTS.borderBottom.value
-    );
-    await expect(landingPage.userMenuBtn).toHaveCSS(
-      Data.HOVER_EFFECTS.borderRight.borderProperty,
-      Data.HOVER_EFFECTS.borderRight.value
-    );
-    await expect(landingPage.userMenuBtn).toHaveCSS(
-      Data.HOVER_EFFECTS.scale110.cssProperty,
-      Data.HOVER_EFFECTS.scale110.value
-    );
+    await landingPage.navbar.expectUserMenuBtnActiveHover();
 
     // 3. Check click interaction
-    await landingPage.clickUserMenuBtn();
-    await expect(landingPage.dropDownMenu).toBeVisible();
+    await landingPage.navbar.clickUserMenuBtn();
+    await landingPage.navbar.expectDropdownMenuVisible();
 
     // 4. Check close open menu
-    await landingPage.clickUserMenuBtn();
-    await expect(landingPage.dropDownMenu).toBeHidden();
+    await landingPage.navbar.clickUserMenuBtn();
+    await landingPage.navbar.expectDropdownMenuHidden(15000);
   });
 });

@@ -1,5 +1,5 @@
 import { Page, Locator, expect } from '@playwright/test';
-import { Navbar } from '../../components/layout/Navbar';
+import { Navbar } from '../../components/layout/navigation.component';
 import * as Data from '../landing/landing.data';
 
 export class LandingPage {
@@ -94,10 +94,11 @@ export class LandingPage {
     await expect(this.eventsSection).toBeVisible();
   expectMenuPageVisible = async () =>
     await this.page.waitForURL(Data.MENU_PAGE_URL);
-
-  clickInstagramBtn = async () => await this.instagramBtn.click();
-  clickCartBtn = async () => await this.cartBtn.click();
-  clickUserMenuBtn = async () => await this.userMenuBtn.click();
+  expectOpenCartVisible = async () => {
+    await expect(this.openCart).toBeVisible();
+  };
+  expectCartButtonVisible = async () =>
+    await expect(this.cartBtn).toBeVisible();
 
   // map controls
   clickMapCameraControl = async (

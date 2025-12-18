@@ -10,7 +10,7 @@ test.describe('google map API interaction', () => {
   test('check that map loads and is visible', async ({ page }) => {
     const landingPage = new LandingPage(page);
 
-    await landingPage.clickAbout();
+    await landingPage.navbar.goToAbout();
     // 1. Check intial visibility
     await expect(landingPage.locationMap).toBeVisible();
 
